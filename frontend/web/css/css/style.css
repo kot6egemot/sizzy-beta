@@ -1,0 +1,53 @@
+@font-face {
+    font-family: "Montserrat SemiBold";
+    font-weight: 400;
+    font-style: normal;
+    src: url(../fonts/Montserrat/Montserrat-SemiBold.eot);
+    src: url(../fonts/Montserrat/Montserrat-SemiBold.eot?#iefix) format("embedded-opentype"), url(../fonts/Montserrat/Montserrat-SemiBold.woff) format("woff"), url(../fonts/Montserrat/Montserrat-SemiBold.ttf) format("truetype")
+}
+
+.label_color {
+    color: #393939!important;
+    font-size: 14px!important;
+    font-family: "Montserrat SemiBold"!important;
+}
+
+.butn_no_active {
+    opacity: 0.5;
+}
+
+.block-font {
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
+
+
+
+.btn_main {
+    background: #FF464E!important;
+    color: #fff!important;
+}
+
+.shadow_none {
+    box-shadow: none!important;
+}
+
+.border-bottom {
+    box-shadow: none!important;
+    border-radius: 0px!important;
+    border-bottom: 1px solid #EBEBEB!important;
+    border-left: none!importnat;
+    border-right: none!important;
+    border-top: none!important;
+}
+
+.border-top {
+    box-shadow: none!important;
+    border-radius: 0px!important;
+    border-top: 1px solid #EBEBEB!important;
+}
+
+.plus_btn {
+    background: #fff!important;
+}
