@@ -3,68 +3,12 @@
 
 // Variant
 // This one lets you improve the PDF sharpness by scaling up the HTML node tree to render as an image before getting pasted on the PDF.
-$(".export-pdf").click(function print(quality =  1 ) {
-		const filename  =  'ThisIsYourPDFFilename.pdf';
 
-		html2canvas(document.querySelector('.main-svg'), 
-								{ scale: quality}
-						 ).then(canvas =>> {
-			let pdf =  new jsPDF('p',  'mm',  'a4');
-			pdf.addImage(canvas.toDataURL('image/png'),  'PNG',  0 ,  0 ,  211 ,  298 );
-			pdf.save( filename);
-		});
-	});
 
 
 
 
 (function() {
-    
-    
-    function beforePDFPrinting() {
-    var cc = document.getElementsByTagName("svg");
-    for (i = 0; i < cc.length; i++) {
-        var svg = cc[i];
-        var rect = svg.getBoundingClientRect();
- 
-        var img = document.createElement("img");
-        img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svg.outerHTML)));
-        img.style = "position:absolute;top:" + rect.top + "px;left:" + rect.left + "px;";
-        img.className = "remove-after-print";
-        svg.parentNode.insertBefore(img, svg);
-    }
-}
- 
-function afterPDFPrinting() {
-    $(".remove-after-print").remove();
-}
- 
-function PDFPrint() {
- 
-    beforePDFPrinting();
-       
-    kendo.drawing.drawDOM($(".main-svg"))
-        .then(function (group) {
-            // Render the result as a PDF file
-            return kendo.drawing.exportPDF(group, {
-                paperSize: "auto",
-                margin: { left: "1cm", top: "1cm", right: "1cm", bottom: "1cm" }
-            });
-        })
-        .done(function (data) {
-            // Save the PDF file
-            kendo.saveAs({
-                dataURI: data,
-                fileName: "Export.pdf"
-            });
- 
-            afterPDFPrinting();
-        });
-         
-});
-    
-    
-    
      $(".export-pdf").click(function() {
         // Convert the DOM element to a drawing using kendo.drawing.drawDOM
         kendo.drawing.drawDOM($(".main-svg"))
