@@ -86,6 +86,7 @@ class ImgController extends Controller
             $pivot = Yii::$app->request->get('pivot');
             echo json_encode(Font::getPopular($pivot));
         }
+        die;
     }
 
     function download_file($file, $name)

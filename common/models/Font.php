@@ -2,22 +2,22 @@
 
 namespace common\models;
 
-use yii\db\ActiveRecord;
+ use yii\db\ActiveRecord;
 
-class Font extends ActiveRecord
-{
-    const LIMIT = 10;
+ class Font extends ActiveRecord
+ {
+     const LIMIT = 20;
 
-    public static function tableName()
-    {
-        return '{{font}}';
-    }
+     public static function tableName()
+     {
+         return '{{font}}';
+     }
 
-    public static function getPopular($pivot = null)
-    {
-        $state = self::find()->orderBy(['views' => SORT_DESC])->limit(self::LIMIT);
-        if($pivot) $state->where(['<', 'id', $pivot]);
+     public static function getPopular($pivot = null)
+     {
+         $state = self::find()->orderBy(['views' => SORT_DESC]);
+         if($pivot) $state->where(['<', 'id', $pivot]);
 
-        return $state->asArray()->all();
-    }
-}
+         return $state->asArray()->all();
+     }
+ }

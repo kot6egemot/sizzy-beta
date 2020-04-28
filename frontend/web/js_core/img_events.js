@@ -205,7 +205,6 @@
             },
             success: (html) => {
                 html = JSON.parse(html);
-
                 html.filter((font) => {
                     $('.fonts-list').append(`
                     <button data-src="${font.src}" type="button" class="list-group-item list-group-item-action">${font.title}</button>
@@ -275,6 +274,7 @@ $('.update-html').click((event) => {
         },
         success: (html) => {
             html = JSON.parse(html);
+    
 
             if (html.status == 'success') {
                 $('.alert-update').fadeIn(300);
