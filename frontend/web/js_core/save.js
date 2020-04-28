@@ -1,7 +1,26 @@
 // Variant
 // This one lets you improve the PDF sharpness by scaling up the HTML node tree to render as an image before getting pasted on the PDF.
 
-
+ function exportPdf() {
+        let api_key = '97920652e1d5354ebc8fa2e0d1b36a8a0e9c4b695f9361416661defa53dd43d3'
+        let data = JSON.stringify({
+            html: $('.main-svg').html(),
+            apiKey: api_key,
+            landscape: true,
+        })
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', 'https://api.html2pdf.app/v1/generate');
+        xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        xhr.responseType = "arraybuffer";
+        xhr.onload = function () {
+            if (this.status === 200) {
+                var blob = new Blob([xhr.response], {type: "application/pdf"});
+                var objectUrl = URL.createObjectURL(blob);
+                window.open(objectUrl);
+            }
+        };
+        xhr.send(data)
+    }
 
 
 

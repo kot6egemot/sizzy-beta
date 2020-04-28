@@ -218,7 +218,7 @@
                         <style class="fonts-style">
                             @font-face {
                                 font-family: ${title};
-                                src: url(http://color.ajoin.ru/${pathToFont}) format('truetype');
+                                src: url(http://localhost/${pathToFont}) format('truetype');
                                 font-weight: normal;
                                 font-style: normal;
                             }

@@ -242,7 +242,7 @@
 }
 
 .main-svg {
-    margin: auto
+    margin: 0px!important;
 }
 
 .pickr .pcr-button.clear {
