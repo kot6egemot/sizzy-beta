@@ -8,7 +8,7 @@
 (function() {
      $(".export-pdf").click(function() {
         // Convert the DOM element to a drawing using kendo.drawing.drawDOM
-        kendo.drawing.drawDOM($(".main-svg"))
+        drawDom()
         .then(function(group) {
             // Render the result as a PDF file
             return kendo.drawing.exportPDF(group, {
@@ -28,7 +28,7 @@
     
      $(".export-img").click(function() {
         // Convert the DOM element to a drawing using kendo.drawing.drawDOM
-        kendo.drawing.drawDOM($(".main-svg"))
+        drawDom()
         .then(function(group) {
             // Render the result as a PNG image
             return kendo.drawing.exportImage(group);
@@ -46,7 +46,7 @@
     
         $(".export-svg").click(function() {
         // Convert the DOM element to a drawing using kendo.drawing.drawDOM
-        kendo.drawing.drawDOM($(".main-svg"))
+        drawDom()
         .then(function(group) {
             // Render the result as a SVG document
             return kendo.drawing.exportSVG(group);
@@ -135,6 +135,12 @@
     });
 })();
 
+function drawDom() {
+    let $tmpSvg = $("#temp-svg");
+    $tmpSvg.html($(".main-svg").html());
+    $tmpSvg[0].style.transform = 'none';
+    return kendo.drawing.drawDOM($tmpSvg);
+}
 
 
 
