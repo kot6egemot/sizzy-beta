@@ -87,8 +87,9 @@ class ImgController extends Controller
     {
         if (Yii::$app->request->isAjax) {
             $pivot = Yii::$app->request->get('pivot');
+            $cyrrilic = Yii::$app->request->get('cyrrilic', 1);
             Yii::$app->response->format = Response::FORMAT_JSON;
-            return Font::getPopular($pivot);
+            return Font::getPopular($pivot, $cyrrilic);
         }
     }
 
