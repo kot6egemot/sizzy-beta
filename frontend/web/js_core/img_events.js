@@ -12,7 +12,6 @@
     const CURRENT_EDIT_ELEMENT = `[${CURRENT_EDIT}="true"]`;
 
     const renderHtml = (html) => {
-        html = JSON.parse(html);
         $('.main-svg').empty();
         $('.main-svg').append(html);
         //if (draggable) draggable.target = ""
@@ -131,7 +130,6 @@
                     id: element.attr('data-id')
                 },
                 success: (html) => {
-                    html = JSON.parse(html);
                     $('.category-section').hide();
                     $('.html-list-container').empty();
                     $('.html-list-section').show();
@@ -204,7 +202,6 @@
                 pivot: 0
             },
             success: (html) => {
-                html = JSON.parse(html);
                 html.filter((font) => {
                     $('.fonts-list').append(`
                     <button data-src="${font.src}" type="button" class="list-group-item list-group-item-action">${font.title}</button>
@@ -273,9 +270,6 @@ $('.update-html').click((event) => {
             content: editor.getValue()
         },
         success: (html) => {
-            html = JSON.parse(html);
-    
-
             if (html.status == 'success') {
                 $('.alert-update').fadeIn(300);
             }

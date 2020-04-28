@@ -9,6 +9,7 @@ use frontend\models\Category;
 use frontend\models\Html;
 use common\models\Font;
 use frontend\models\HtmlList;
+use yii\web\Response;
 
 class ImgController extends Controller
 {
@@ -33,7 +34,8 @@ class ImgController extends Controller
                 $img['hasList'] = 0;
             }
 
-            echo json_encode($imgs);
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return $imgs;
         }
     }
 
@@ -43,7 +45,8 @@ class ImgController extends Controller
     public function actionCategory()
     {
         if (Yii::$app->request->isAjax) {
-            echo json_encode(Category::get());
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return Category::get();
         }
     }
 
@@ -55,8 +58,8 @@ class ImgController extends Controller
         if (Yii::$app->request->isAjax) {
             $img = Img::getById((int) Yii::$app->request->get('id'));
             $html = Html::getById($img->id_html);
-            echo json_encode($html->content);
-            die;
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return $html->content;
         }
     }
 
@@ -72,8 +75,8 @@ class ImgController extends Controller
                 $list['src'] = Img::getById($list['node'])->src;
             }
 
-            echo json_encode($htmlList);
-            die;
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return $htmlList;
         }
     }
 
@@ -84,9 +87,9 @@ class ImgController extends Controller
     {
         if (Yii::$app->request->isAjax) {
             $pivot = Yii::$app->request->get('pivot');
-            echo json_encode(Font::getPopular($pivot));
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return Font::getPopular($pivot);
         }
-        die;
     }
 
     function download_file($file, $name)
