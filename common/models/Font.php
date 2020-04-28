@@ -13,10 +13,13 @@ namespace common\models;
          return '{{font}}';
      }
 
-     public static function getPopular($pivot = null)
+     public static function getPopular($pivot = null, $cyrrilic = null)
      {
          $state = self::find()->orderBy(['views' => SORT_DESC]);
          if($pivot) $state->where(['<', 'id', $pivot]);
+         if ($cyrrilic) {
+             $state->where(['cyrrilic' => $cyrrilic]);
+         }
 
          return $state->asArray()->all();
      }

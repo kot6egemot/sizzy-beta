@@ -15,7 +15,7 @@
             url: '/img/category',
             async: false,
             success: (html) => {
-                categories = JSON.parse(html);
+                categories = html;
             }
         });
 
@@ -91,7 +91,7 @@
                 pivot: pivot
             },
             success: (html) => {
-                imgs = JSON.parse(html);
+                imgs = html;
             }
         });
 
@@ -99,7 +99,6 @@
     };
 
     const renderHtml = (html) => {
-        html = JSON.parse(html);
         $('.main-svg').empty();
         $('.main-svg').append(html);
         if (draggable) draggable.target = ""
@@ -203,7 +202,6 @@
                     pivot: $(pivot).attr('data-show-order')
                 },
                 success: (html) => {
-                    html = JSON.parse(html);
                     let item = $(container.find('.inner-container').get(0));
                     let classesName = item.attr('class').split(' ');
                     let category = '.' + classesName[classesName.length - 1];
@@ -229,7 +227,6 @@
                                     id: element.attr('data-id')
                                 },
                                 success: (html) => {
-                                    html = JSON.parse(html);
                                     $('.category-section').hide();
                                     $('.html-list-container').empty();
                                     $('.html-list-section').show();
