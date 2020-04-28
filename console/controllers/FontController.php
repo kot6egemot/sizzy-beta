@@ -19,14 +19,16 @@
          array_shift($dirs);
          array_shift($dirs);
 
+         $regulars = [];
          foreach($dirs as $dir)
          {
+             $fontName = ucfirst($dir);
              $files = scandir(self::DIR . '/' . $dir);
              foreach($files as $file)
              {
-                 if(preg_match('~\w+\-Regular\.ttf~', $file))
+                 if (preg_match('~(Regular|R)\.ttf$~i', $file) || strtolower($file) === strtolower($dir) . '.ttf')
                  {
-                     $fontName = ucfirst($dir);
+                     $regulars[] = $dir;
                      $model = Font::find()->where(['title' => $fontName])->one();
                      if ($model === null) {
                          $model = new Font();
@@ -37,7 +39,21 @@
                      $model->save();
                  }
              }
+             foreach($files as $file)
+             {
+                 if (in_array($dir, $regulars, true)) {
+                     continue;
+                 }
+
+                 if (strpos($file, '.ttf') !== false) {
+                     echo sprintf('Not found regular for: %s, current: %s', $fontName, $file) . PHP_EOL;
+                 }
+             }
          }
+
+         echo sprintf('All: %s', count($dirs)) . PHP_EOL;
+         echo sprintf('Found regular: %s', count($regulars)) . PHP_EOL;
+         echo sprintf('Diff: %s', count($dirs) - count($regulars)) . PHP_EOL;
      }
 
      private function getCyrrilicFonts()
