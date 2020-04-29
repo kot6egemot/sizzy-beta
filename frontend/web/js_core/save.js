@@ -28,9 +28,11 @@
      $(".export-pdf").click(function() {
          convertToCanvas().then(canvas => {
              const imgData = canvas.toDataURL("image/png");
+             const height = parseInt($(".main-svg").height());
+             const width = parseInt($(".main-svg").width());
              const pdf = new jsPDF({
-                 orientation: 'landscape',
-                 format: [parseInt($(".main-svg").height()) / 1.5, parseInt($(".main-svg").width()) / 1.5]
+                 orientation: width > height ? 'landscape' : 'portrait',
+                 format: [height / 1.5, width / 1.5]
              });
              const pdfWidth = pdf.internal.pageSize.getWidth();
              const pdfHeight = pdf.internal.pageSize.getHeight();
