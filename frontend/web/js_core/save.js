@@ -27,9 +27,12 @@
 (function() {
      $(".export-pdf").click(function() {
          convertToCanvas().then(canvas => {
-             const imgData = canvas.toDataURL("image/jpeg", 1.0);
-             const pdf = new jsPDF();
-             pdf.addImage(imgData, 'JPEG', 0, 0);
+             const imgData = canvas.toDataURL("image/png");
+             const pdf = new jsPDF({
+                 orientation: 'landscape',
+                 format: [parseInt($(".main-svg").height()) / 1.5, parseInt($(".main-svg").width()) / 1.5]
+             });
+             pdf.addImage(imgData, 'PNG', 0, 0);
              pdf.save("HR-Dashboard.pdf");
          });
     });
