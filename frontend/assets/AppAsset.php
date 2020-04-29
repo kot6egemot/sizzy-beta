@@ -60,7 +60,8 @@ class AppAsset extends AssetBundle
         'js/console.js',
         'js_core/save.js',
         'https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js',
-        'https://unpkg.com/html2canvas@1.0.0-rc.5/dist/html2canvas.js'
+        'https://unpkg.com/html2canvas@1.0.0-rc.5/dist/html2canvas.js',
+        'https://cdn.jsdelivr.net/npm/file-saver@2.0.2/dist/FileSaver.min.js'
     
     ];
     
