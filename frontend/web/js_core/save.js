@@ -26,23 +26,17 @@
 
 (function() {
      $(".export-pdf").click(function() {
-        // Convert the DOM element to a drawing using kendo.drawing.drawDOM
-        drawDom()
-        .then(function(group) {
-            // Render the result as a PDF file
-            return kendo.drawing.exportPDF(group, {
-                paperSize: "auto",
-                margin: { left: "0px", top: "0px", right: "0px", bottom: "0px" }
-            });
-        })
-        .done(function(data) {
-            // Save the PDF file
-            kendo.saveAs({
-                dataURI: data,
-                fileName: "HR-Dashboard.pdf",
-                proxyURL: "https://demos.telerik.com/kendo-ui/service/export"
-            });
-        });
+         html2canvas(
+             prepareTempContainer()[0],
+             {
+                 useCORS: true
+             }
+         ).then(canvas => {
+             const imgData = canvas.toDataURL("image/jpeg", 1.0);
+             const pdf = new jsPDF();
+             pdf.addImage(imgData, 'JPEG', 0, 0);
+             pdf.save("HR-Dashboard.pdf");
+         });
     });
     
      $(".export-img").click(function() {
