@@ -32,7 +32,9 @@
                  orientation: 'landscape',
                  format: [parseInt($(".main-svg").height()) / 1.5, parseInt($(".main-svg").width()) / 1.5]
              });
-             pdf.addImage(imgData, 'PNG', 0, 0);
+             const pdfWidth = pdf.internal.pageSize.getWidth();
+             const pdfHeight = pdf.internal.pageSize.getHeight();
+             pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
              pdf.save("HR-Dashboard.pdf");
          });
     });
