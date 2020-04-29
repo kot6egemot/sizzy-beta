@@ -46,20 +46,16 @@
     });
     
      $(".export-img").click(function() {
-        // Convert the DOM element to a drawing using kendo.drawing.drawDOM
-        drawDom()
-        .then(function(group) {
-            // Render the result as a PNG image
-            return kendo.drawing.exportImage(group);
-        })
-        .done(function(data) {
-            // Save the image file
-            kendo.saveAs({
-                dataURI: data,
-                fileName: "HR-Dashboard.png",
-                proxyURL: "https://demos.telerik.com/kendo-ui/service/export"
-            });
-        });
+         html2canvas(
+             prepareTempContainer()[0],
+             {
+                 useCORS: true
+             }
+         ).then(canvas => {
+             canvas.toBlob(function(blob) {
+                 saveAs(blob, "HR-Dashboard.png");
+             });
+         });
     });
     
     
@@ -154,11 +150,16 @@
     });
 })();
 
-function drawDom() {
+function prepareTempContainer() {
     let $tmpSvg = $("#temp-svg");
-    $tmpSvg.html($(".main-svg").html());
+    let html = $(".main-svg").html();
+    $tmpSvg.html(html);
     $tmpSvg[0].style.transform = 'none';
-    return kendo.drawing.drawDOM($tmpSvg);
+    return $tmpSvg;
+}
+
+function drawDom() {
+    return kendo.drawing.drawDOM(prepareTempContainer());
 }
 
 
