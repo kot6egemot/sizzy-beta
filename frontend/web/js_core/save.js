@@ -142,10 +142,12 @@
 })();
 
 function prepareTempContainer() {
-    let $tmpSvg = $("#temp-svg");
-    let html = $(".main-svg").html();
+    const $tmpSvg = $("#temp-svg");
+    const $mainSvg = $(".main-svg");
+    let html = $mainSvg.html();
+    $tmpSvg.width($mainSvg.width() + 'px');
+    $tmpSvg.height($mainSvg.height() + 'px');
     $tmpSvg.html(html);
-    $tmpSvg[0].style.transform = 'none';
     return $tmpSvg;
 }
 
@@ -154,10 +156,11 @@ function drawDom() {
 }
 
 function convertToCanvas() {
-    const container = prepareTempContainer()[0];
+    const $container = prepareTempContainer();
+    const container = $container[0];
     container.querySelectorAll('svg').forEach(svg => {
         const canvas = document.createElement('canvas');
-        canvas.style.cssText =  svg.style.cssText;
+        canvas.style.cssText = svg.style.cssText;
         const ctx = canvas.getContext('2d');
         canvg.Canvg.fromString(ctx, svg.outerHTML).start();
         insertAfter(canvas, svg);
@@ -166,7 +169,15 @@ function convertToCanvas() {
     return html2canvas(
         container,
         {
-            useCORS: true
+            useCORS: true,
+            width: $container.width(),
+            height: $container.height(),
+            scale: 1,
+            x: 0,
+            y: 0,
+            windowWidth: $container.width(),
+            windowHeight: $container.height(),
+            removeContainer: false
         }
     )
 }

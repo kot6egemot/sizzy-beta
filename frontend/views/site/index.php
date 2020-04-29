@@ -7,7 +7,7 @@ $this->title = 'Страница редактирования';
 <script>
     document.getElementsByTagName("html")[0].className += " js";
 </script>
-<div id="temp-svg" style="position: absolute; left: -99999px;"></div>
+<div id="temp-svg" style="position: absolute; top: 0; left: 0;"></div>
 <div class="flex@md">
     <aside class="sidebar sidebar--static@md js-sidebar" id="sidebar" aria-labelledby="sidebarTitle">
         <div class="sidebar__panel">
