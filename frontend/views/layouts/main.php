@@ -19,6 +19,7 @@ AppAsset::register($this);
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <script type="text/javascript" src="https://unpkg.com/canvg@3.0.4/lib/umd.js"></script>
 </head>
 
 <body>
