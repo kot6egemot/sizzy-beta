@@ -26,12 +26,7 @@
 
 (function() {
      $(".export-pdf").click(function() {
-         html2canvas(
-             prepareTempContainer()[0],
-             {
-                 useCORS: true
-             }
-         ).then(canvas => {
+         convertToCanvas().then(canvas => {
              const imgData = canvas.toDataURL("image/jpeg", 1.0);
              const pdf = new jsPDF();
              pdf.addImage(imgData, 'JPEG', 0, 0);
@@ -40,12 +35,7 @@
     });
     
      $(".export-img").click(function() {
-         html2canvas(
-             prepareTempContainer()[0],
-             {
-                 useCORS: true
-             }
-         ).then(canvas => {
+         convertToCanvas().then(canvas => {
              canvas.toBlob(function(blob) {
                  saveAs(blob, "HR-Dashboard.png");
              });
@@ -156,6 +146,27 @@ function drawDom() {
     return kendo.drawing.drawDOM(prepareTempContainer());
 }
 
+function convertToCanvas() {
+    const container = prepareTempContainer()[0];
+    container.querySelectorAll('svg').forEach(svg => {
+        const canvas = document.createElement('canvas');
+        canvas.style.cssText =  svg.style.cssText;
+        const ctx = canvas.getContext('2d');
+        canvg.Canvg.fromString(ctx, svg.outerHTML).start();
+        insertAfter(canvas, svg);
+        svg.remove();
+    });
+    return html2canvas(
+        container,
+        {
+            useCORS: true
+        }
+    )
+}
+
+function insertAfter(newNode, referenceNode) {
+    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}
 
 
 
