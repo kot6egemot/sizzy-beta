@@ -207,11 +207,11 @@ $this->title = 'Страница редактирования';
                             <button class="dropdown-item format-save-item" value="pdf" type="button">PDF</button> -->
                             
                             
-                             <button class='dropdown-item format-save-item export-pdf'>Export as PDF</button>
+                           <button class='dropdown-item format-save-item export-pdf' onclick="convertToFormat('pdf')">Export as PDF</button>
                         
-                         <button class='dropdown-item format-save-item export-img'>Export as Image</button>
+                           <button class='dropdown-item format-save-item export-img' onclick="convertToFormat('jpg')">Export as JPG</button>
                         
-                        <button class='dropdown-item format-save-item export-svg'>Export as SVG</button>
+                        <button class='dropdown-item format-save-item export-svg' onclick="convertToFormat('png')">Export as PNG</button>
                             
                         </div>
 
