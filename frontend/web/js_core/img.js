@@ -41,8 +41,8 @@
                     </div>
                 </div>
             </div>
+            <button class="btn btn-succrss show-more else">Показать еще</button>
             </div>
-<button class="btn btn-succrss show-more else">Показать еще</button>
         </li>
         `);
     };
