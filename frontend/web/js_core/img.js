@@ -189,7 +189,7 @@
         });
 
         $('.show-more').click((event) => {
-            let container = $(event.target).parent();
+            let container = $(event.target).parents(".accordion__item");
             let imgs = container.find('.content-block');
             let id_category = container.attr('data-id-category');
             let pivot = imgs.get(imgs.length - 1);
