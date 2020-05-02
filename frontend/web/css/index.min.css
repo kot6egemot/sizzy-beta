@@ -298,12 +298,15 @@ li {
 
 .pickr .pcr-button:before {
     height: 36px !important;
-    width: 36px !important
+    width: 36px !important;
+    display: contents;
 }
 
 .pickr .pcr-button:after {
     height: 36px !important;
-    width: 36px !important
+    width: 36px !important;
+    border: 1px solid #393939;
+    margin: 2px;
 }
 
 main {

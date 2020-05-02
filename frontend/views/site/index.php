@@ -34,7 +34,7 @@ $this->title = 'Страница редактирования';
 </form> -->
 
 
-                    <div class="search-input search-input--icon-right">
+                <!--    <div class="search-input search-input--icon-right">
                         <input class="form-control width-100%" type="search" name="searchInputX" id="searchInputX" placeholder="Search...">
                         <button class="search-input__btn">
                             <svg class="icon" viewBox="0 0 24 24">
@@ -45,7 +45,8 @@ $this->title = 'Страница редактирования';
                                 </g>
                             </svg>
                         </button>
-                    </div>
+                    </div> -->
+                    SIZZE.IO
 
 
 
@@ -86,6 +87,37 @@ $this->title = 'Страница редактирования';
                             </style>
                         </div>
                     </section>
+                    
+                    
+                    
+                    <section class="font-style-section" style="display: none;">
+                        <div class="container m-0 p-0 max-width-sm">
+                            
+                            
+                            <div class="d-flex align-items-center justify-content-between">
+                               <button class="button-no-active shadow_none btn btn--primary button-studio category-button"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M9.41436 11.9999L16.7073 19.2928L15.293 20.707L6.58594 11.9999L15.293 3.29282L16.7073 4.70703L9.41436 11.9999Z" fill="#393939"/>
+</svg></button>
+                            
+                         
+                            
+                            
+                        
+                            <div class="current-font-style">Current</div>
+                        
+                            
+                            </div>
+                            <ul class="fonts-style-list mt-0">
+
+                            </ul>
+                            <style>
+                                .fonts-list {
+                                    margin-top: 10px;
+                                }
+                            </style>
+                        </div>
+                    </section>
+                    
 
                     <section class="html-list-section" style="display: none; margin-top: 10px;">
                               <div class="d-flex align-items-center justify-content-between">
@@ -140,7 +172,7 @@ $this->title = 'Страница редактирования';
                             </svg></a>
                     </div>
 
-                    <div class="text-center flex-column">
+              <!--      <div class="text-center flex-column">
                         
                <!--         
                         
@@ -148,7 +180,7 @@ $this->title = 'Страница редактирования';
                         
                          <button class='export-img k-button'>Export as Image</button>
                         
-                        <button class='export-svg k-button'>Export as SVG</button>-->
+                        <button class='export-svg k-button'>Export as SVG</button>
 
                         <button class="button-no-active shadow_none btn btn--primary button-studio"><svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M4.4144 6.00007H10.0002C17.8691 6.00007 21.0002 9.25637 21.0002 17.0001H19.0002C19.0002 10.3438 16.7466 8.00007 10.0002 8.00007H4.4144L8.7073 12.293L7.293 13.7072L0.585938 7.00007L7.293 0.292969L8.7073 1.70717L4.4144 6.00007Z" fill="#393939" />
@@ -167,8 +199,8 @@ $this->title = 'Страница редактирования';
                             </div> -->
 
 
-                        <!--  <input class="scale" type="text" placeholder="Scale" value="100"> -->
-                    </div>
+                        <!--  <input class="scale" type="text" placeholder="Scale" value="100">
+                    </div> -->
 
                     <div class="text-center flex-column">
 
@@ -448,6 +480,12 @@ $this->title = 'Страница редактирования';
                             <!-- Container -->
                             <div class="flex flex-column items-start tool-item font-tool">
                                 <button class="current-font shadow_none btn_main fonts btn btn-primary my-font" type="button">
+                                    current
+                                </button>
+                            </div>
+                            
+                            <div class="flex flex-column items-start tool-item font-tool">
+                                <button class="current-font-style shadow_none btn_main btn btn-primary my-font fonts-style" type="button">
                                     current
                                 </button>
                             </div>

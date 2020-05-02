@@ -175,6 +175,99 @@
             }
         })
     });
+    
+    
+    
+     $('.fonts-style').click((event) => {
+        if ($('.category-section:visible').get(0)) {
+            oldSection = '.category-section';
+        }
+        if ($('.html-list-section:visible').get(0)) {
+            oldSection = '.html-list-section';
+        }
+
+        if ($('.font-section:visible').get(0)) {
+            $('.font-section').hide();
+            $(oldSection).show();
+            return;
+        }
+
+
+        $('.category-section').hide();
+        $('.html-list-section').hide();
+        $('.font-section').show();
+
+        $.ajax({
+            type: 'GET',
+            url: '/img/font',
+            data: {
+                pivot: 0
+            },
+            success: (html) => {
+                html.filter((font) => {
+                    $('.fonts-style-list').append(`
+                    <button data-src="${font.src}" type="button" class="list-group-item list-group-item-action">${font.title}</button>
+                    `);
+                })
+
+                $('.fonts-style-list').click((event) => {
+                    if (event.target.tagName != 'BUTTON') return;
+
+                    let pathToFont = $(event.target).attr('data-src');
+                    let title = $(event.target).html();
+
+                    $('.main-svg').children().first().prepend(`
+                        <style class="fonts-style">
+                            @font-face {
+                                font-family: ${title};
+                                src: url(http://sizze.io/${pathToFont}) format('truetype');
+                                font-weight: normal;
+                                font-style: normal;
+                            }
+                        </style>
+                    `);
+
+                    $(CURRENT_EDIT_ELEMENT).css('font-family', title);
+                    updateCurrentFont();
+                    draggable.updateRect();
+                    draggable.updateTarget();
+                });
+            }
+        });
+
+    });
+
+    $('.category-button').click((event) => {
+        $('.fonts-style-list').empty();
+
+        if ($('.html-list-section:visible').get(0)) {
+            $('.html-list-section').hide();
+            $('.category-section').show();
+            return;
+        }
+
+        if ($('.font-style-section:visible').get(0) && oldSection == '.html-list-section') {
+            $('.font-style-section').hide();
+            $('.html-list-section').show();
+            return;
+        }
+
+        $('.font-style-section').hide();
+        $('.html-list-section').hide();
+        $('.category-section').show();
+    });
+
+    $('.format-button').click((event) => {
+        $('.font-container').addClass('collapse');
+        $('.font-container').removeClass('show');
+    });
+
+    
+    
+    
+    
+    
+    
 
     $('.fonts').click((event) => {
         if ($('.category-section:visible').get(0)) {
@@ -218,7 +311,7 @@
                         <style class="fonts-style">
                             @font-face {
                                 font-family: ${title};
-                                src: url(http://color.ajoin.ru/${pathToFont}) format('truetype');
+                                src: url(http://sizze.io/${pathToFont}) format('truetype');
                                 font-weight: normal;
                                 font-style: normal;
                             }
