@@ -42,7 +42,7 @@ const updateCurrentFontSize = () => {
 };
 
 const updateCurrentStyle = () => {
-    $('.current-font-style').html($(CURRENT_EDIT_ELEMENT).data('font-style') || 'current')
+    $('.current-font-style').html($(CURRENT_EDIT_ELEMENT).data('font-style') || 'Regular')
 };
 
 const divToBr = () => {
