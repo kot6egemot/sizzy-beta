@@ -30,7 +30,7 @@ $this->title = 'Страница редактирования';
                     <!--         <form class="form-inline md-form mb-0 w-100 form-sm mt-0">
   <i class="fas fa-search" aria-hidden="true"></i>
   <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"
-    aria-label="Search"> 
+    aria-label="Search">
 </form> -->
 
 
@@ -46,6 +46,7 @@ $this->title = 'Страница редактирования';
                             </svg>
                         </button>
                     </div> -->
+                    
                     SIZZE.IO
 
 
@@ -62,20 +63,20 @@ $this->title = 'Страница редактирования';
 
                     <section class="font-section" style="display: none;">
                         <div class="container m-0 p-0 max-width-sm">
-                            
-                            
+
+
                             <div class="d-flex align-items-center justify-content-between">
                                <button class="button-no-active shadow_none btn btn--primary button-studio category-button"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M9.41436 11.9999L16.7073 19.2928L15.293 20.707L6.58594 11.9999L15.293 3.29282L16.7073 4.70703L9.41436 11.9999Z" fill="#393939"/>
 </svg></button>
-                            
-                         
-                            
-                            
-                        
+
+
+
+
+
                             <div class="current-font">Current</div>
-                        
-                            
+
+
                             </div>
                             <ul class="fonts-list mt-0">
 
@@ -89,34 +90,34 @@ $this->title = 'Страница редактирования';
                     </section>
                     
                     
-                    
-                    <section class="font-style-section" style="display: none;">
-                        <div class="container m-0 p-0 max-width-sm">
-                            
-                            
-                            <div class="d-flex align-items-center justify-content-between">
-                               <button class="button-no-active shadow_none btn btn--primary button-studio category-button"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M9.41436 11.9999L16.7073 19.2928L15.293 20.707L6.58594 11.9999L15.293 3.29282L16.7073 4.70703L9.41436 11.9999Z" fill="#393939"/>
-</svg></button>
-                            
-                         
-                            
-                            
-                        
-                            <div class="current-font-style">Current</div>
-                        
-                            
-                            </div>
-                            <ul class="fonts-style-list mt-0">
+                     <section class="font-style-section" style="display: none;">
+                         <div class="container m-0 p-0 max-width-sm">
 
-                            </ul>
-                            <style>
-                                .fonts-list {
-                                    margin-top: 10px;
-                                }
-                            </style>
-                        </div>
-                    </section>
+
+                             <div class="d-flex align-items-center justify-content-between">
+                                <button class="button-no-active shadow_none btn btn--primary button-studio category-button"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+ <path fill-rule="evenodd" clip-rule="evenodd" d="M9.41436 11.9999L16.7073 19.2928L15.293 20.707L6.58594 11.9999L15.293 3.29282L16.7073 4.70703L9.41436 11.9999Z" fill="#393939"/>
+ </svg></button>
+
+
+
+
+
+                             <div class="current-font-style">Current</div>
+
+
+                             </div>
+                             <ul class="fonts-style-list mt-0">
+
+                             </ul>
+                             <style>
+                                 .fonts-list {
+                                     margin-top: 10px;
+                                 }
+                             </style>
+                         </div>
+                     </section>
+                    
                     
 
                     <section class="html-list-section" style="display: none; margin-top: 10px;">
@@ -124,14 +125,14 @@ $this->title = 'Страница редактирования';
                                <button class="button-no-active shadow_none btn btn--primary button-studio category-button"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M9.41436 11.9999L16.7073 19.2928L15.293 20.707L6.58594 11.9999L15.293 3.29282L16.7073 4.70703L9.41436 11.9999Z" fill="#393939"/>
 </svg></button>
-                            
-                         
-                            
-                            
-                        
+
+
+
+
+
                             <div class="id-name">Название шаблона</div>
-                        
-                            
+
+
                             </div>
                         <div class="html-list-container">
 
@@ -172,14 +173,14 @@ $this->title = 'Страница редактирования';
                             </svg></a>
                     </div>
 
-              <!--      <div class="text-center flex-column">
-                        
-               <!--         
-                        
+                  <!--  <div class="text-center flex-column">
+
+               
+
                           <button class='export-pdf k-button'>Export as PDF</button>
-                        
+
                          <button class='export-img k-button'>Export as Image</button>
-                        
+
                         <button class='export-svg k-button'>Export as SVG</button>
 
                         <button class="button-no-active shadow_none btn btn--primary button-studio"><svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -190,17 +191,17 @@ $this->title = 'Страница редактирования';
                                 <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M16.5858 6.00007L12.2929 1.70717L13.7071 0.292969L20.4142 7.00007L13.7071 13.7072L12.2929 12.293L16.5858 8.00007H11C4.2536 8.00007 2 10.3438 2 17.0001H0C0 9.25637 3.1311 6.00007 11 6.00007H16.5858Z" fill="#393939" />
                             </svg></button>
 
-                        <!-- <input type="text" placeholder="Градус" class="rotate-input" style="display: none;"> -->
+                         <input type="text" placeholder="Градус" class="rotate-input" style="display: none;"> 
 
-                        <!--       <div class="def-number-input number-input safari_only">
+                              <div class="def-number-input number-input safari_only">
                                 <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus size-tool"></button>
                                 <input class="scale" min="0" name="scale" value="100" type="number">
                                 <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus size-tool"></button>
-                            </div> -->
+                            </div> 
 
 
-                        <!--  <input class="scale" type="text" placeholder="Scale" value="100">
-                    </div> -->
+                         <input class="scale" type="text" placeholder="Scale" value="100">
+                    </div>    -->
 
                     <div class="text-center flex-column">
 
@@ -211,14 +212,14 @@ $this->title = 'Страница редактирования';
                             <button class="dropdown-item add-item" value="text" type="button">Текст</button>
                         </div>-->
 
-                        
-                        
+
+
                          <button class="button-no-active shadow_none btn btn--primary button-studio">
                              <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M29 18C29 24.0751 24.0751 29 18 29C11.9249 29 7 24.0751 7 18C7 11.9249 11.9249 7 18 7C24.0751 7 29 11.9249 29 18ZM9 18C9 22.9706 13.0294 27 18 27C22.9706 27 27 22.9706 27 18C27 13.0294 22.9706 9 18 9C13.0294 9 9 13.0294 9 18ZM14 13C14 12.2146 14.864 11.7357 15.53 12.152L23.53 17.152C24.1567 17.5437 24.1567 18.4563 23.53 18.848L15.53 23.848C14.864 24.2643 14 23.7854 14 23V13ZM16 14.8042L21.1132 18L16 21.1958V14.8042Z" fill="#393939"/>
 </svg>
                         </button>
-                        
+
 
                         <button class="button-no-active shadow_none btn btn--primary button-studio"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M12 4C12 4.2874 12.0303 4.5678 12.0879 4.838L7.0169 7.3735C6.2836 6.5319 5.2039 6 4 6C1.79086 6 0 7.7909 0 10C0 12.2091 1.79086 14 4 14C5.2039 14 6.2836 13.4681 7.0169 12.6265L12.0879 15.162C12.0303 15.4322 12 15.7126 12 16C12 18.2091 13.7909 20 16 20C18.2091 20 20 18.2091 20 16C20 13.7909 18.2091 12 16 12C14.7961 12 13.7164 12.5319 12.9831 13.3735L7.9121 10.838C7.9697 10.5678 8 10.2874 8 10C8 9.7126 7.9697 9.4322 7.9121 9.162L12.9831 6.6265C13.7164 7.4681 14.7961 8 16 8C18.2091 8 20 6.2091 20 4C20 1.79086 18.2091 0 16 0C13.7909 0 12 1.79086 12 4ZM6 10C6 11.1046 5.1046 12 4 12C2.8954 12 2 11.1046 2 10C2 8.8954 2.8954 8 4 8C5.1046 8 6 8.8954 6 10ZM16 6C17.1046 6 18 5.1046 18 4C18 2.8954 17.1046 2 16 2C14.8954 2 14 2.8954 14 4C14 5.1046 14.8954 6 16 6ZM18 16C18 17.1046 17.1046 18 16 18C14.8954 18 14 17.1046 14 16C14 14.8954 14.8954 14 16 14C17.1046 14 18 14.8954 18 16Z" fill="#393939" />
@@ -226,25 +227,25 @@ $this->title = 'Страница редактирования';
 
 
                         <button class="window-menu button-no-active shadow_none save btn btn--primary button-studio save-button save-button-menu" type="button">
-                            
+
                             <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="window-menu">
 <path class="window-menu" fill-rule="evenodd" clip-rule="evenodd" d="M22.2929 15.2929L19 18.5858V8H17V18.5858L13.7071 15.2929L12.2929 16.7071L18 22.4142L23.7071 16.7071L22.2929 15.2929ZM28 26V22H26V26H10V22H8V26C8 27.1046 8.89543 28 10 28H26C27.1046 28 28 27.1046 28 26Z" fill="#393939"/>
 </svg>
-                            
-                            
+
+
                         </button>
                         <div class="window-menu dropdown-menu dropdown-menu-save" aria-labelledby="dropdownMenuMenuFormat">
                        <!--     <button class="dropdown-item format-save-item" value="png" type="button">PNG</button>
                             <button class="dropdown-item format-save-item" value="jpeg" type="button">JPEG</button>
                             <button class="dropdown-item format-save-item" value="pdf" type="button">PDF</button> -->
-                            
-                            
+
+
                            <button class='dropdown-item format-save-item export-pdf' onclick="convertToFormat('pdf')">Export as PDF</button>
-                        
+
                            <button class='dropdown-item format-save-item export-img' onclick="convertToFormat('jpg')">Export as JPG</button>
-                        
+
                         <button class='dropdown-item format-save-item export-svg' onclick="convertToFormat('png')">Export as PNG</button>
-                            
+
                         </div>
 
 
@@ -275,190 +276,192 @@ $this->title = 'Страница редактирования';
 
             <div class="row over justify-content-center h-100 no-main-svg main-svg-container">
 
-                <div class="index-1 canvas1 align-self-center main-svg draggable" id='example'>
-                    
-               
-                    
-                </div>
+                <div class="view-container">
+                    <div class="view-container__wrap">
+                        <div class="canvas-wrap">
+
+                    <div class="index-1 canvas1 align-self-center main-svg draggable" id='example'>
 
 
-
-
-
-                <!--    <div class="container h-100">
-
-                <div class="row h-100">
-                    <div class="align-self-center main-svg">
 
                     </div>
-                
-                </div>
-            </div> -->
-                <div class="position-absolute fixed-bottom">
 
-                    <div class="index-0 w-100">
-                        <div class="d-flex card-body justify-content-between">
+                        </div>
 
+                    <!--    <div class="container h-100">
 
-                            
-                            
-                            <div class="card border-0 decoration index-2 tools-panel tools-panel-default d-flex justify-content-start">
-                                
-                                <div class="flex-column style-block-container hide">
-                       
-                                                                 <button id="" class="button-no-active shadow_none btn btn--primary button-studio">
-
-
-
-                                     <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M17 22H10C8.92671 22 8 21.2057 8 20.1429V15.8571C8 14.7943 8.92671 14 10 14H17V8H19V14H26C27.0733 14 28 14.7943 28 15.8571V20.1429C28 21.2057 27.0733 22 26 22H19V28H17V22ZM10 16V20H26V16H10Z" fill="#393939"/>
-</svg>
-
-                                </button> 
-                                                                 <button id="" class="button-no-active shadow_none btn btn--primary button-studio">
-
-
-<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M20.1429 25H15.8571C14.7943 25 14 24.0733 14 23V10C14 8.92671 14.7943 8 15.8571 8H20.1429C21.2057 8 22 8.92671 22 10V23C22 24.0733 21.2057 25 20.1429 25ZM20 10H16V23H20V10ZM8 26V28H28V26H8Z" fill="#393939"/>
-</svg>
-
-                                     
-                                </button> 
-                                                                 <button id="" class="button-no-active shadow_none btn btn--primary button-studio">
-
-<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M8 8V10H28V8H8ZM20.1429 28H15.8571C14.7943 28 14 27.0733 14 26V13C14 11.9267 14.7943 11 15.8571 11H20.1429C21.2057 11 22 11.9267 22 13V26C22 27.0733 21.2057 28 20.1429 28ZM20 26V13H16V26H20Z" fill="#393939"/>
-</svg>
-
-                                     
-                                </button> 
-                                    
-                                    
-                                    
-                                    
-                                       <button id="" class="button-no-active shadow_none btn btn--primary button-studio">
-
-
-<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M14 17V10C14 8.92671 14.7943 8 15.8571 8H20.1429C21.2057 8 22 8.92671 22 10V17H28V19H22V26C22 27.0733 21.2057 28 20.1429 28H15.8571C14.7943 28 14 27.0733 14 26V19H8V17H14ZM20 10H16V26H20V10Z" fill="#393939"/>
-</svg>
-                                     
-                                </button> 
-                                    
-                                           
-                                       <button id="" class="button-no-active shadow_none btn btn--primary button-studio">
-
-
-<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M10 8H8V28H10V8ZM28 15.8571V20.1429C28 21.2057 27.0733 22 26 22H13C11.9267 22 11 21.2057 11 20.1429V15.8571C11 14.7943 11.9267 14 13 14H26C27.0733 14 28 14.7943 28 15.8571ZM13 16V20H26V16H13Z" fill="#393939"/>
-</svg>
-
-                                     
-                                </button> 
-                                    
-                                    
-                                              <button id="" class="button-no-active shadow_none btn btn--primary button-studio">
-
-<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M28 8H26V28H28V8ZM25 15.8571V20.1429C25 21.2057 24.0733 22 23 22H10C8.92671 22 8 21.2057 8 20.1429V15.8571C8 14.7943 8.92671 14 10 14H23C24.0733 14 25 14.7943 25 15.8571ZM10 16V20H23V16H10Z" fill="#393939"/>
-</svg>
-
-
-                                     
-                                </button> 
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                </div>
-                                
-                                         
-                                
-                    </div>
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                                           <div class="card border-0 decoration index-2 tools-panel tools-panel-default d-flex justify-content-start ">
-                                
-                                <div class="flex-column style-text-container hide">
-                       
-                                
-                                 <button id="" class="button-no-active shadow_none btn btn--primary button-studio">
-                                   <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M28 13V11H8V13H28ZM22 15V17H8V15H22ZM28 21V19H8V21H28ZM22 25V23H8V25H22Z" fill="#393939"/>
-</svg>
-
-                                     
-                                </button>   
-                                
-                                 <button id="" class="button-no-active shadow_none btn btn--primary button-studio">
-                                  <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M28 13V11H8V13H28ZM25 15V17H11V15H25ZM28 21V19H8V21H28ZM25 25V23H11V25H25Z" fill="#393939"/>
-</svg>
-
-                                     
-                                </button> 
-                                    
-                                    
-                                    
-                                                    <button id="" class="button-no-active shadow_none btn btn--primary button-studio">
-<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M28 13V11H8V13H28ZM28 15V17H14V15H28ZM28 21V19H8V21H28ZM28 25V23H14V25H28Z" fill="#393939"/>
-</svg>
-
-
-                                     
-                                </button> 
-                                    
-                                    
-                                                                               <button id="" class="button-no-active shadow_none btn btn--primary button-studio">
-
-
-
-                                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M28 13V11H8V13H28ZM28 15V17H8V15H28ZM28 21V19H8V21H28ZM28 25V23H8V25H28Z" fill="#393939"/>
-</svg>
- 
-                                </button> 
-                                    
-                                                            
-                                </div>
-                                
-                                         
-                                
-                    </div>
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            <button class="button-no-active-plus index-2 shadow_none add btn btn--primary button-studio save-button" type="button" id="dropdownMenuMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="30" cy="30" r="30" fill="white" />
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M31 29H40V31H31V40H29V31H20V29H29V20H31V29Z" fill="#393939" />
-                                </svg>
-
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuMenu">
-                                <button class="dropdown-item label_color_16 add-item" value="text" type="button">Текст</button>
-                                <button class="dropdown-item label_color_16 add-item" type="img" type="button">Изображение</button>
-                            </div>
-
-
+                    <div class="row h-100">
+                        <div class="align-self-center main-svg">
 
                         </div>
 
                     </div>
+                </div> -->
+                    <div class="position-absolute fixed-bottom">
+
+<!--                    <div class="index-0 w-100">-->
+<!--                        <div class="d-flex card-body justify-content-between">-->
+<!---->
+<!---->
+<!---->
+<!---->
+<!--                            <div class="card border-0 decoration index-2 tools-panel tools-panel-default d-flex justify-content-start">-->
+<!---->
+<!--                                <div class="flex-column style-block-container hide">-->
+<!---->
+<!--                                                                 <button id="" class="button-no-active shadow_none btn btn--primary button-studio">-->
+<!---->
+<!---->
+<!---->
+<!--                                     <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--<path fill-rule="evenodd" clip-rule="evenodd" d="M17 22H10C8.92671 22 8 21.2057 8 20.1429V15.8571C8 14.7943 8.92671 14 10 14H17V8H19V14H26C27.0733 14 28 14.7943 28 15.8571V20.1429C28 21.2057 27.0733 22 26 22H19V28H17V22ZM10 16V20H26V16H10Z" fill="#393939"/>-->
+<!--</svg>-->
+<!---->
+<!--                                </button>-->
+<!--                                                                 <button id="" class="button-no-active shadow_none btn btn--primary button-studio">-->
+<!---->
+<!---->
+<!--<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--<path fill-rule="evenodd" clip-rule="evenodd" d="M20.1429 25H15.8571C14.7943 25 14 24.0733 14 23V10C14 8.92671 14.7943 8 15.8571 8H20.1429C21.2057 8 22 8.92671 22 10V23C22 24.0733 21.2057 25 20.1429 25ZM20 10H16V23H20V10ZM8 26V28H28V26H8Z" fill="#393939"/>-->
+<!--</svg>-->
+<!---->
+<!---->
+<!--                                </button>-->
+<!--                                                                 <button id="" class="button-no-active shadow_none btn btn--primary button-studio">-->
+<!---->
+<!--<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--<path fill-rule="evenodd" clip-rule="evenodd" d="M8 8V10H28V8H8ZM20.1429 28H15.8571C14.7943 28 14 27.0733 14 26V13C14 11.9267 14.7943 11 15.8571 11H20.1429C21.2057 11 22 11.9267 22 13V26C22 27.0733 21.2057 28 20.1429 28ZM20 26V13H16V26H20Z" fill="#393939"/>-->
+<!--</svg>-->
+<!---->
+<!---->
+<!--                                </button>-->
+<!---->
+<!---->
+<!---->
+<!---->
+<!--                                       <button id="" class="button-no-active shadow_none btn btn--primary button-studio">-->
+<!---->
+<!---->
+<!--<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--<path fill-rule="evenodd" clip-rule="evenodd" d="M14 17V10C14 8.92671 14.7943 8 15.8571 8H20.1429C21.2057 8 22 8.92671 22 10V17H28V19H22V26C22 27.0733 21.2057 28 20.1429 28H15.8571C14.7943 28 14 27.0733 14 26V19H8V17H14ZM20 10H16V26H20V10Z" fill="#393939"/>-->
+<!--</svg>-->
+<!---->
+<!--                                </button>-->
+<!---->
+<!---->
+<!--                                       <button id="" class="button-no-active shadow_none btn btn--primary button-studio">-->
+<!---->
+<!---->
+<!--<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--<path fill-rule="evenodd" clip-rule="evenodd" d="M10 8H8V28H10V8ZM28 15.8571V20.1429C28 21.2057 27.0733 22 26 22H13C11.9267 22 11 21.2057 11 20.1429V15.8571C11 14.7943 11.9267 14 13 14H26C27.0733 14 28 14.7943 28 15.8571ZM13 16V20H26V16H13Z" fill="#393939"/>-->
+<!--</svg>-->
+<!---->
+<!---->
+<!--                                </button>-->
+<!---->
+<!---->
+<!--                                              <button id="" class="button-no-active shadow_none btn btn--primary button-studio">-->
+<!---->
+<!--<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--<path fill-rule="evenodd" clip-rule="evenodd" d="M28 8H26V28H28V8ZM25 15.8571V20.1429C25 21.2057 24.0733 22 23 22H10C8.92671 22 8 21.2057 8 20.1429V15.8571C8 14.7943 8.92671 14 10 14H23C24.0733 14 25 14.7943 25 15.8571ZM10 16V20H23V16H10Z" fill="#393939"/>-->
+<!--</svg>-->
+<!---->
+<!---->
+<!---->
+<!--                                </button>-->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!--                                </div>-->
+<!---->
+<!---->
+<!---->
+<!--                    </div>-->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!--                                           <div class="card border-0 decoration index-2 tools-panel tools-panel-default d-flex justify-content-start ">-->
+<!---->
+<!--                                <div class="flex-column style-text-container hide">-->
+<!---->
+<!---->
+<!--                                 <button id="" class="button-no-active shadow_none btn btn--primary button-studio">-->
+<!--                                   <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--<path fill-rule="evenodd" clip-rule="evenodd" d="M28 13V11H8V13H28ZM22 15V17H8V15H22ZM28 21V19H8V21H28ZM22 25V23H8V25H22Z" fill="#393939"/>-->
+<!--</svg>-->
+<!---->
+<!---->
+<!--                                </button>-->
+<!---->
+<!--                                 <button id="" class="button-no-active shadow_none btn btn--primary button-studio">-->
+<!--                                  <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--<path fill-rule="evenodd" clip-rule="evenodd" d="M28 13V11H8V13H28ZM25 15V17H11V15H25ZM28 21V19H8V21H28ZM25 25V23H11V25H25Z" fill="#393939"/>-->
+<!--</svg>-->
+<!---->
+<!---->
+<!--                                </button>-->
+<!---->
+<!---->
+<!---->
+<!--                                                    <button id="" class="button-no-active shadow_none btn btn--primary button-studio">-->
+<!--<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--<path fill-rule="evenodd" clip-rule="evenodd" d="M28 13V11H8V13H28ZM28 15V17H14V15H28ZM28 21V19H8V21H28ZM28 25V23H14V25H28Z" fill="#393939"/>-->
+<!--</svg>-->
+<!---->
+<!---->
+<!---->
+<!--                                </button>-->
+<!---->
+<!---->
+<!--                                                                               <button id="" class="button-no-active shadow_none btn btn--primary button-studio">-->
+<!---->
+<!---->
+<!---->
+<!--                                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--<path fill-rule="evenodd" clip-rule="evenodd" d="M28 13V11H8V13H28ZM28 15V17H8V15H28ZM28 21V19H8V21H28ZM28 25V23H8V25H28Z" fill="#393939"/>-->
+<!--</svg>-->
+<!---->
+<!--                                </button>-->
+<!---->
+<!---->
+<!--                                </div>-->
+<!---->
+<!---->
+<!---->
+<!--                    </div>-->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!--                            <button class="button-no-active-plus index-2 shadow_none add btn btn--primary button-studio save-button" type="button" id="dropdownMenuMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--                                    <circle cx="30" cy="30" r="30" fill="white" />-->
+<!--                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M31 29H40V31H31V40H29V31H20V29H29V20H31V29Z" fill="#393939" />-->
+<!--                                </svg>-->
+<!---->
+<!--                            </button>-->
+<!--                            <div class="dropdown-menu" aria-labelledby="dropdownMenuMenu">-->
+<!--                                <button class="dropdown-item label_color_16 add-item" value="text" type="button">Текст</button>-->
+<!--                                <button class="dropdown-item label_color_16 add-item" type="img" type="button">Изображение</button>-->
+<!--                            </div>-->
+<!---->
+<!---->
+<!---->
+<!--                        </div>-->
+<!---->
+<!--                    </div>-->
 
                     <!--    <div class="m-5 def-number-input number-input safari_only">
                                 <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus size-tool"></button>
@@ -485,10 +488,13 @@ $this->title = 'Страница редактирования';
                             </div>
                             
                             <div class="flex flex-column items-start tool-item font-tool">
-                                <button class="current-font-style shadow_none btn_main btn btn-primary my-font fonts-style" type="button">
-                                    current
-                                </button>
-                            </div>
+                                 <button class="current-font-style shadow_none btn_main btn btn-primary my-font fonts-style" type="button">
+                                     current
+                                 </button>
+                             </div>
+                            
+                            
+                            
 
                             <!-- Container -->
                             <div class="text-center flex-column tool-item color-tool">
@@ -505,22 +511,22 @@ $this->title = 'Страница редактирования';
                                 </div>
                             </div>
 
-                                                                                                                                         
+
                                         <!-- Container -->
                             <div class="text-center flex-column tool-item style-tool">
-                                                                                     
+
                                                               <button id="style-block" class="button-no-active shadow_none btn btn--primary button-studio">
                                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M17 22H10C8.92671 22 8 21.2057 8 20.1429V15.8571C8 14.7943 8.92671 14 10 14H17V8H19V14H26C27.0733 14 28 14.7943 28 15.8571V20.1429C28 21.2057 27.0733 22 26 22H19V28H17V22ZM10 16V20H26V16H10Z" fill="#393939"/>
 </svg>
-                                </button>       
+                                </button>
                                                                                 <button id="style-text" class="button-no-active shadow_none btn btn--primary button-studio">
                                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M28 13V11H8V13H28ZM25 15V17H11V15H25ZM28 21V19H8V21H28ZM25 25V23H11V25H25Z" fill="#393939"/>
 </svg>
-                                </button>    
+                                </button>
                                                                                      </div>
-                                                                                                                                         
+
                             <!-- Container -->
                             <div class="text-center flex-column tool-item style-tool">
                                 <!--    <p class="m-0 label_color">Стиль</p> -->
@@ -638,6 +644,8 @@ $this->title = 'Страница редактирования';
 
                 </div>-->
                 </div>
+                    </div>
+                </div>
 
                 <!-- end main content -->
     </main>
@@ -647,12 +655,11 @@ $this->title = 'Страница редактирования';
     <button type="button" class="list-group-item list-group-item-action">Текст</button>
     <button type="button" class="list-group-item list-group-item-action">Изображение</button>
 </div>
-        
-        
-        
-        
+
+
+
+
         <script>
-            
+
     </script>
-        
-        
+

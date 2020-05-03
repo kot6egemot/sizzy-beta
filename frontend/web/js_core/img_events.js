@@ -20,10 +20,10 @@
         let canvasWidth = parseInt($('.container .h-100').css('width'));
         let bottomMenuHeight = parseInt($('.menu-bottom').css('height'));
 
-      
-        
-        
-   
+
+
+
+
 
         if (imgWidth < canvasWidth) {
             let scale = Math.round(canvasWidth * 90 / imgWidth);
@@ -33,10 +33,10 @@
             $('.scale').val(80);
             $('.main-svg').css('transform', `scale(0.8)`);
         }
-        
-        
-        
-        
+
+
+
+
        /* if (imgWidth > canvasWidth) {
             let scale = Math.round(canvasWidth * 90 / imgWidth);
             $('.scale').val(scale);
@@ -46,12 +46,12 @@
             $('.main-svg').css('transform', `scale(0.7)`);
         }
         */
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
 
         $('[data-set="true"]').click((event) => {
             let clickCounter = +$(event.target).attr('clickCounter');
@@ -110,6 +110,24 @@
 
         $(window).click((event) => {
             $('.contextmenu').hide();
+        });
+
+        const mainSVG = document.querySelector('.main-svg');
+        const sizer = $('.main-svg > div');
+
+        $(mainSVG).css({
+            width: sizer.css('width'),
+            height: sizer.css('height')
+        });
+
+        const newWidth = mainSVG.getBoundingClientRect().width;
+        const newHeight = mainSVG.getBoundingClientRect().height;
+
+        console.log(newWidth);
+
+        $('.canvas-wrap').css({
+            width: `${newWidth}px`,
+            height: `${newHeight}px`,
         })
     }
 
@@ -239,39 +257,50 @@
             }
         });
 
-    });
+     });
 
-    $('.category-button').click((event) => {
-        $('.fonts-style-list').empty();
+     $('.category-button').click((event) => {
+         $('.fonts-style-list').empty();
 
-        if ($('.html-list-section:visible').get(0)) {
-            $('.html-list-section').hide();
-            $('.category-section').show();
-            return;
+         if ($('.html-list-section:visible').get(0)) {
+             $('.html-list-section').hide();
+             $('.category-section').show();
+             return;
+         }
+
+         if ($('.font-style-section:visible').get(0) && oldSection == '.html-list-section') {
+             $('.font-style-section').hide();
+             $('.html-list-section').show();
+             return;
+         }
+
+         $('.font-style-section').hide();
+         $('.html-list-section').hide();
+         $('.category-section').show();
+     });
+
+     $('.format-button').click((event) => {
+         $('.font-container').addClass('collapse');
+         $('.font-container').removeClass('show');
+     });
+
         }
 
-        if ($('.font-style-section:visible').get(0) && oldSection == '.html-list-section') {
-            $('.font-style-section').hide();
-            $('.html-list-section').show();
-            return;
-        }
+        $.ajax({
+            type: 'GET',
+            url: 'img/html',
+            data: {
+                id: element.attr('data-id')
+            },
+            success: (html) => {
+                renderHtml(html);
 
-        $('.font-style-section').hide();
-        $('.html-list-section').hide();
-        $('.category-section').show();
+                if (element.attr('data-list') == '0') {
+                    $('aside').removeClass('sidebar--is-visible');
+                }
+            }
+        })
     });
-
-    $('.format-button').click((event) => {
-        $('.font-container').addClass('collapse');
-        $('.font-container').removeClass('show');
-    });
-
-    
-    
-    
-    
-    
-    
 
     $('.fonts').click((event) => {
         if ($('.category-section:visible').get(0)) {

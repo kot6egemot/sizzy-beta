@@ -73,7 +73,7 @@ const defaultRect = () => {
 
 /**
  * Обновление панели инструментов
- * @param {object} event 
+ * @param {object} event
  */
 const updateTools = (event) => {
     const attrs = {
@@ -115,6 +115,73 @@ const updateTools = (event) => {
     $('.quantity').attr('value', fontSize);
 };
 
+function setOwnStyles(target) {
+    // const el = $(target);
+    // const ownStyles = {...$(el).data('sceneStyle')};
+    //
+    // const props = ['color', 'font-size', 'font-weight', 'font-style', 'text-decoration'];
+    // props.forEach(prop => {
+    //     ownStyles[prop] = ownStyles[props] || el.css(prop);
+    // });
+    // el.data('sceneStyle', ownStyles);
+    //
+    // console.log(el.data('sceneStyle'));
+}
+
+function updateOwnStyle(target, key, value) {
+    const el = $(target);
+    // el.data('sceneStyle', {
+    //     [key]: value
+    // });
+    el.css(key, value);
+    // console.log('update own style: ', el.data('sceneStyle'));
+    // convertOwnStylesForScene(target);
+}
+
+function convertOwnStylesForScene(target) {
+    // const el = $(target);
+    // const ownStyles = {...$(el).data('sceneStyle')};
+    // Object.entries(ownStyles).forEach(([key, value]) => {
+    //     console.log(`covert ${key} ${value}`);
+    //     frame.set(key, value);
+    // })
+}
+
+const initalTransform = {
+    rotate: "0deg",
+    scaleX: 1,
+    scaleY: 1
+};
+
+const frame = new Scene.Frame({
+    width: "250px",
+    height: "200px",
+    left: "0px",
+    top: "0px",
+    transform: initalTransform
+});
+
+function setTransform(target) {
+    target.style.transform = frame.toCSS().match(new RegExp(/transform:(.+);/))[1];
+    target.style.left = frame.get('left');
+    target.style.top = frame.get('top');
+    target.style.width = frame.get('width');
+    target.style.height = frame.get('height');
+    //target.style.cssText = frame.toCSS();
+}
+
+const label = document.createElement('div');
+label.className = 'label';
+document.body.appendChild(label);
+
+const labelElement = document.querySelector(".label");
+
+function setLabel(clientX, clientY, text) {
+//     labelElement.style.cssText = `
+// display: block; transform: translate(${clientX}px, ${clientY - 10}px) translate(-100%, -100%);`;
+//     labelElement.innerHTML = text;
+}
+
 /**
  * События начала редактирования текста
  */
@@ -135,9 +202,15 @@ const editableHandler = (event) => {
 
     console.log(target.prop('tagName'));
 
+    setOwnStyles(target[0]);
+    convertOwnStylesForScene(target[0]);
+    console.log('thos rotate', $(target[0]).data('rotate'));
+    frame.set('transform', 'rotate', $(target[0]).data('rotate') + 'deg' || 0);
+
     if (draggable) draggable.destroy();
 
-   draggable = new Moveable(document.body, {
+    draggable = new Moveable(document.body, {
+        // target: moveableElement,
         draggable: true,
         throttleDrag: 0,
         resizable: true,
@@ -157,59 +230,75 @@ const editableHandler = (event) => {
         scrollable: true,
         scrollContainer: $('.main-svg-container').get(0),
         scrollThreshold: 0,
-        getScrollPosition: ({ scrollContainer }) => ([scrollContainer.scrollLeft, scrollContainer.scrollTop])
-    }).on("drag", ({ target, transform }) => {
-        target.style.transform = transform;
-    }).on("resize", ({
-        target,
-        width,
-        height,
-        dist
-    }) => {
-        target.style.width = width + "px";
-        target.style.height = height + "px";
+    }).on("pinch", ({ clientX, clientY }) => {
+        setTimeout(() => {
+            setLabel(clientX, clientY, `X: ${frame.get("left")}
+            <br/>Y: ${frame.get("top")}
+            <br/>W: ${frame.get("width")}
+            <br/>H: ${frame.get("height")}
+            <br/>S: ${frame.get("transform", "scaleX").toFixed(2)}, ${frame.get("transform", "scaleY").toFixed(2)}
+            <br/>R: ${parseFloat(frame.get("transform", "rotate")).toFixed(1)}deg
+            `);
+        });
+
+    }).on("drag", ({ target, left, top, clientX, clientY, isPinch }) => {
+        frame.set("left", `${left}px`);
+        frame.set("top", `${top}px`);
+
+        const deg = $(target).data('rotate') || 0;
+        frame.set("transform", "rotate", `${deg}deg`);
+
+        setTransform(target);
+        !isPinch && setLabel(clientX, clientY, `X: ${left}px<br/>Y: ${top}px`);
+
+    }).on("scale", ({ target, delta, clientX, clientY, isPinch }) => {
+        const scaleX = frame.get("transform", "scaleX") * delta[0];
+        const scaleY = frame.get("transform", "scaleY") * delta[1];
+        frame.set("transform", "scaleX", scaleX);
+        frame.set("transform", "scaleY", scaleY);
+        setTransform(target);
+        !isPinch && setLabel(clientX, clientY, `S: ${scaleX.toFixed(2)}, ${scaleY.toFixed(2)}`);
+
+    }).on("rotateStart", ({ target, beforeDelta, clientX, clientY, isPinch }) => {
+        const currentDeg = $(target).data('rotate') || 0;
+        frame.set("transform", "rotate", `${currentDeg}deg`);
+    }).on("rotate", ({ target, beforeDelta, clientX, clientY, isPinch }) => {
+        const deg = parseFloat(frame.get("transform", "rotate")) + beforeDelta;
+
+        // const rotateDeg = $(target).data('rotate', deg) || 0;
+        frame.set("transform", "rotate", `${deg}deg`);
+        $(target).data('rotate', deg);
+
+        setTransform(target);
+        !isPinch && setLabel(clientX, clientY, `R: ${deg.toFixed(1)}`);
+
+    }).on("resize", ({ target, width, height, clientX, clientY, isPinch }) => {
+        frame.set("width", `${width}px`);
+        frame.set("height", `${height}px`);
+        setTransform(target);
+        !isPinch &&  setLabel(clientX, clientY, `W: ${width}px<br/>H: ${height}px`);
+
+    }).on("warp", ({ target, multiply, delta, clientX, clientY }) => {
+        frame.set("transform", "matrix3d", multiply(frame.get("transform", "matrix3d"), delta));
+        setTransform(target);
+        setLabel(clientX, clientY, `X: ${clientX}px<br/>Y: ${clientY}px`);
+
+    }).on("dragEnd", () => {
+        labelElement.style.display = "none";
+    }).on("scaleEnd", () => {
+        labelElement.style.display = "none";
+    }).on("rotateEnd", () => {
+        labelElement.style.display = "none";
+    }).on("resizeEnd", () => {
+        labelElement.style.display = "none";
+    }).on("warpEnd", () => {
+        labelElement.style.display = "none";
     });
 
-    const frame = {
-        translate: [0, 0],
-        rotate: 0
-    };
-    draggable.on("resizeStart", ({ target, set, setOrigin, dragStart }) => {
-        // Set origin if transform-orgin use %.
-        setOrigin(["%", "%"]);
-
-        // If cssSize and offsetSize are different, set cssSize. (no box-sizing)
-        const style = window.getComputedStyle(target);
-        const cssWidth = parseFloat(style.width);
-        const cssHeight = parseFloat(style.height);
-        set([cssWidth, cssHeight]);
-        // If a drag event has already occurred, there is no dragStart.
-        dragStart && dragStart.set(frame.translate);
-    }).on("resize", ({ target, width, height, drag }) => {
-        target.style.width = `${width}px`;
-        target.style.height = `${height}px`;
-
-        //$(CURRENT_EDIT_ELEMENT).fitText();
-
-        // get drag event
-        frame.translate = drag.beforeTranslate;
-        target.style.transform = `translate(${drag.beforeTranslate[0]}px, ${drag.beforeTranslate[1]}px`;
-    }).on("resizeEnd", ({ target, isDrag, clientX, clientY }) => {
-        console.log("onResizeEnd", target, isDrag);
-    });
-    draggable.on("rotateStart", ({set }) => {
-        set(frame.rotate);
-    }).on("rotate", ({ target, beforeRotate,  }) => {
-        frame.rotate = beforeRotate;
-        target.style.transform = `rotate(${beforeRotate}deg)`;
-        $('.rotate-input').val(Math.round(beforeRotate));
-    }).on("rotateEnd", ({ target, isDrag, clientX, clientY }) => {
-        console.log("onRotateEnd", target, isDrag);
-    });
-    draggable.on("scroll", ({ scrollContainer, direction }) => {
-        scrollContainer.scrollLeft += direction[0] * 10;
-        scrollContainer.scrollTop += direction[1] * 10;
-    });
+    frame.set('left', target.css('left'));
+    frame.set('top', target.css('top'));
+    frame.set('width', target.css('width'));
+    frame.set('height', target.css('height'));
 
     draggable.scrollable = true;
 
@@ -250,7 +339,7 @@ const editableHandler = (event) => {
 
     $(CURRENT_EDIT_ELEMENT).keyup((event) => {
         draggable.updateRect();
-        
+
     });
     console.log('Update editable element');
 };
@@ -288,6 +377,7 @@ const toggleCss = (attrPointer, cssProperty, cssValueOn, cssValueOff, item = nul
 
     if (editableElement.attr(attrPointer)) {
         editableElement.css(cssProperty, cssValueOff);
+        updateOwnStyle($(editableElement), cssProperty, cssValueOff);
         editableElement.removeAttr(attrPointer);
         $(item).removeClass('active-style-button');
         return;
@@ -295,12 +385,13 @@ const toggleCss = (attrPointer, cssProperty, cssValueOn, cssValueOff, item = nul
 
     editableElement.attr(attrPointer, 'true');
     editableElement.css(cssProperty, cssValueOn);
+    updateOwnStyle($(editableElement), cssProperty, cssValueOn);
     $(item).addClass('active-style-button');
 }
 
 /**
  * Добавления к тексту жирного
- * @param {object} event 
+ * @param {object} event
  */
 const editWeightText = (event) => {
     wrapText();
@@ -309,7 +400,7 @@ const editWeightText = (event) => {
 
 /**
  * Курсив для текста
- * @param {object} event 
+ * @param {object} event
  */
 const editItalicText = (event) => {
     toggleCss('data-style-italic', 'font-style', 'italic', 'normal', '#style');
@@ -325,6 +416,7 @@ const editUnderlineText = (event) => {
 
 const editSizeText = (event) => {
     $(CURRENT_EDIT_ELEMENT).css('font-size', $('.quantity').val() + 'px');
+    updateOwnStyle($(CURRENT_EDIT_ELEMENT), 'font-size', $('.quantity').val() + 'px');
     if (!draggable) return;
     draggable.updateRect();
     draggable.updateTarget();
@@ -332,8 +424,8 @@ const editSizeText = (event) => {
 
 /**
  * Изменение цвета
- * 
- * @param {object} event 
+ *
+ * @param {object} event
  */
 const editColor = (event) => {
     if ($(CURRENT_EDIT_ELEMENT).prop('tagName') == 'svg') {
@@ -345,12 +437,12 @@ const editColor = (event) => {
         $(CURRENT_EDIT_ELEMENT).css('background', $('.pcr-result').val());
         return;
     }
-    $(CURRENT_EDIT_ELEMENT).css('color', $('.pcr-result').val());
+    updateOwnStyle($(CURRENT_EDIT_ELEMENT), 'color', $('.pcr-result').val());
 };
 
 /**
  * Масштаба
- * @param {object} event 
+ * @param {object} event
  */
 const scaleCanvas = (event) => {
     let scale = +$('.scale').val();
@@ -358,9 +450,9 @@ const scaleCanvas = (event) => {
 }
 
 /**
- * 
- * 
- * @param {object} event 
+ *
+ *
+ * @param {object} event
  */
 const getToolsPanel = (event) => {
     let type = $(CURRENT_EDIT_ELEMENT).attr('data-type');
@@ -506,47 +598,59 @@ $('.size-tool-button').click((event) => {
     let imgWidth = parseInt($('.main-svg').css('width'));
     let imgHeight = parseInt($('.canvas1').css('height'));
     let canvasWidth = parseInt($('.container .h-100').css('width'));
-  /*  let topMenuHeight = parseInt($('.top-menu').css('height'));
-    let bottomMenuHeight = parseInt($('.menu-bottom').css('height'));
-    let canvasHeight = parseInt($('.container .h-100').css('height'));
-    let mainHeight = canvasHeight - bottomMenuHeight - topMenuHeight;
-    console.log('topMenuHeight');*/
-    
-    
- if (currentScale < 100) {
+    /*  let topMenuHeight = parseInt($('.top-menu').css('height'));
+      let bottomMenuHeight = parseInt($('.menu-bottom').css('height'));
+      let canvasHeight = parseInt($('.container .h-100').css('height'));
+      let mainHeight = canvasHeight - bottomMenuHeight - topMenuHeight;
+      console.log('topMenuHeight');*/
 
-    if (isPlus) {
-        currentScale += 10;
-    } else if (currentScale > 10) {
-        currentScale -= 10;
-    }
-     } else {
-         if (isPlus) {
-        currentScale += 0;
-    } else if (currentScale > 10) {
-        currentScale -= 10;
-    }
-     }
-     
-     
-    
-  /*   if (isPlus) {
-        currentScale += 10;
-    } else if (currentScale > 10) {
-        currentScale -= 10;
-    }
-*/
-    
 
-    
-    
-    
+    if (currentScale < 200) {
+
+        if (isPlus) {
+            currentScale += 10;
+        } else if (currentScale > 10) {
+            currentScale -= 10;
+        }
+    } else {
+        if (isPlus) {
+            currentScale += 0;
+        } else if (currentScale > 10) {
+            currentScale -= 10;
+        }
+    }
+
+    /*   if (isPlus) {
+          currentScale += 10;
+      } else if (currentScale > 10) {
+          currentScale -= 10;
+      }
+  */
+
+
+
+
+
     $('.scale').val(currentScale);
     $('.main-svg').css('transform', `scale(${currentScale / 100})`);
+    updateView();
     if (!draggable) return;
     draggable.updateRect();
     draggable.updateTarget();
 });
+
+function updateView() {
+    const mainSVG = document.querySelector('.canvas-wrap .main-svg');
+    const newWidth = mainSVG.getBoundingClientRect().width;
+    const newHeight = mainSVG.getBoundingClientRect().height;
+
+    console.log(newWidth);
+
+    $('.canvas-wrap').css({
+        width: `${newWidth}px`,
+        height: `${newHeight}px`,
+    })
+}
 
 $('.pcr-swatches').click((event) => {
     if (event.target.tagName != 'BUTTON') return;
@@ -561,7 +665,8 @@ $('.pcr-swatches').click((event) => {
         $(CURRENT_EDIT_ELEMENT).css('background', $('.pcr-result').val());
         return;
     }
-    $(CURRENT_EDIT_ELEMENT).css('color', color);
+    // $(CURRENT_EDIT_ELEMENT).css('color', color);
+    updateOwnStyle($(CURRENT_EDIT_ELEMENT), 'color', color);
 });
 
 $('.add-item').click((event) => {
@@ -583,7 +688,7 @@ $('.main-svg').click((event) => {
     $('.font-section').hide();
     $('.category-section').show();
     $('.fonts-list').empty();
-    
+
 
     draggable.target = '';
 })
@@ -595,7 +700,7 @@ $('.rotate-input').keyup((event) => {
 })
 
 $(window).click((event) => {
-  
+
     if ($(event.target).hasClass('window-menu')) return;
 
     if ($(event.target).hasClass('no-main-svg')) {
@@ -603,9 +708,9 @@ $(window).click((event) => {
         $('.tools-panel-default').show();
         if (draggable) draggable.target = '';
     }
-     
+
     $('.dropdown-menu-save').removeClass('show-block');
-   
+
 });
 
 $('#style-block').click((event) => {
@@ -624,5 +729,3 @@ $('.main-svg-container').scroll((event) => {
 
     console.log('Here');
 });
-
-
