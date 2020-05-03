@@ -34,13 +34,16 @@ const updatePalette = (hex) => {
 };
 
 const updateCurrentFont = () => {
-    $('.current-font').html($(CURRENT_EDIT_ELEMENT).css('font-family').split(',')[0])
+    $('.current-font').html($(CURRENT_EDIT_ELEMENT).data('font-family') || $(CURRENT_EDIT_ELEMENT).css('font-family').split(',')[0])
 };
 
-
 const updateCurrentFontSize = () => {
-$('.current-font-size').val($(CURRENT_EDIT_ELEMENT).css('font-size').replace('px', ''))
-}; 
+    $('.current-font-size').val($(CURRENT_EDIT_ELEMENT).css('font-size').replace('px', ''))
+};
+
+const updateCurrentStyle = () => {
+    $('.current-font-style').html($(CURRENT_EDIT_ELEMENT).data('font-style') || 'current')
+};
 
 const divToBr = () => {
     let content = $(CURRENT_EDIT_ELEMENT).html();
@@ -234,6 +237,7 @@ const editableHandler = (event) => {
     if ($(CURRENT_EDIT_ELEMENT).attr('data-type') == 'text') {
         updateCurrentFont();
         updateCurrentFontSize();
+        updateCurrentStyle();
         textRect();
     } else {
         defaultRect();

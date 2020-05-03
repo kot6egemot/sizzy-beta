@@ -21,6 +21,20 @@ namespace common\models;
              $state->where(['cyrrilic' => $cyrrilic]);
          }
 
-         return $state->asArray()->all();
+         $rows = $state->asArray()->all();
+         $rows = array_map(static function(array $item) {
+             $item['faces'] = json_decode($item['faces'], true);
+             return $item;
+         }, $rows);
+
+         return $rows;
+     }
+
+     public static function getByName($font)
+     {
+         $row = self::findOne(['title' => $font])->toArray();
+         $row['faces'] = json_decode($row['faces'], true);
+
+         return $row;
      }
  }

@@ -19,41 +19,50 @@
          array_shift($dirs);
          array_shift($dirs);
 
-         $regulars = [];
-         foreach($dirs as $dir)
+         $fonts = [];
+         foreach($dirs as $fontName)
          {
-             $fontName = ucfirst($dir);
-             $files = scandir(self::DIR . '/' . $dir);
+             $files = scandir(self::DIR . '/' . $fontName);
              foreach($files as $file)
              {
-                 if (preg_match('~(Regular|R)\.ttf$~i', $file) || strtolower($file) === strtolower($dir) . '.ttf')
-                 {
-                     $regulars[] = $dir;
-                     $model = Font::find()->where(['title' => $fontName])->one();
-                     if ($model === null) {
-                         $model = new Font();
-                     }
-                     $model->title = $fontName;
-                     $model->src = 'uploads/fonts/' . $dir . '/' . $file;
-                     $model->cyrrilic = in_array($dir, $this->getCyrrilicFonts()) ? 1 : 0;
-                     $model->save();
-                 }
-             }
-             foreach($files as $file)
-             {
-                 if (in_array($dir, $regulars, true)) {
+                 if (strpos($file, '.ttf') === false) {
                      continue;
                  }
-
-                 if (strpos($file, '.ttf') !== false) {
-                     echo sprintf('Not found regular for: %s, current: %s', $fontName, $file) . PHP_EOL;
+                 if (preg_match('/-(?P<face>[a-z]+)\.ttf$/i', $file, $matches)) {
+                     if (!array_key_exists($fontName, $fonts)) {
+                         $fonts[$fontName] = ['faces' => []];
+                     }
+                     $fonts[$fontName]['faces'][] = [
+                         'title' => $matches['face'],
+                         'fileName' => $file
+                     ];
                  }
              }
          }
+         var_dump($fonts);
+         foreach ($fonts as $fontName => $attr) {
+             $regular = null;
+             foreach ($attr['faces'] as $face) {
+                 if ($face['title'] === 'Regular') {
+                     $regular = $face['fileName'];
+                     break;
+                 }
+             }
+             if ($regular === null) {
+                 continue;
+             }
+             $model = Font::find()->where(['title' => ucfirst($fontName)])->one();
+             if ($model === null) {
+                 $model = new Font();
+             }
+             $model->title = ucfirst($fontName);
+             $model->src = 'uploads/fonts/' . $fontName . '/' . $regular;
+             $model->cyrrilic = in_array($fontName, $this->getCyrrilicFonts()) ? 1 : 0;
+             $model->faces = json_encode($attr['faces']);
+             $model->save();
+         }
 
-         echo sprintf('All: %s', count($dirs)) . PHP_EOL;
-         echo sprintf('Found regular: %s', count($regulars)) . PHP_EOL;
-         echo sprintf('Diff: %s', count($dirs) - count($regulars)) . PHP_EOL;
+         echo sprintf('Total: %s', count($dirs)) . PHP_EOL;
      }
 
      private function getCyrrilicFonts()
