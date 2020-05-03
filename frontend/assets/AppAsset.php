@@ -11,7 +11,7 @@ class AppAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
-    
+
     public $css = [
         'css/index.min.css',
         'https://use.fontawesome.com/releases/v5.11.2/css/all.css',
@@ -30,6 +30,8 @@ class AppAsset extends AssetBundle
     ];
 
     public $js = [
+        'https://daybrush.com/scenejs/release/latest/dist/scene.js',
+        'https://daybrush.com/moveable/release/latest/dist/moveable.min.js',
         'js/new.js',
         'js/scripts.js',
         'js/scripts.min.js',
@@ -50,7 +52,7 @@ class AppAsset extends AssetBundle
         'js_core/img.js',
         'js_core/admin.js',
         'js_core/img_events.js',
-        '//cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js', 
+        '//cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js',
         'node_modules/svg2pdf.js/dist/svg2pdf.js',
         'js_core/FileSaver.js',
         'https://daybrush.com/moveable/release/latest/dist/moveable.min.js',
@@ -61,10 +63,9 @@ class AppAsset extends AssetBundle
         'js_core/save.js',
         'https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js',
         'https://unpkg.com/html2canvas@1.0.0-rc.5/dist/html2canvas.js',
-        'https://cdn.jsdelivr.net/npm/file-saver@2.0.2/dist/FileSaver.min.js'
-    
+        'https://cdn.jsdelivr.net/npm/file-saver@2.0.2/dist/FileSaver.min.js',
     ];
-    
+
     public $depends = [
         'yii\web\YiiAsset'
     ];

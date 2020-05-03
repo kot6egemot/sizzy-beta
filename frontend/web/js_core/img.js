@@ -4,7 +4,7 @@
 (function() {
     /**
      * Получение категорий изображений
-     * 
+     *
      * @return object
      */
     const getImgCategory = () => {
@@ -24,7 +24,7 @@
 
     /**
      * Отображение контейнера с определеной категорией
-     * 
+     *
      * @param object category
      */
   const renderImageContainer = (category) => {
@@ -50,7 +50,7 @@
 
     /**
      * Отображение изображения
-     * 
+     *
      * @param {object} image
      * @param {string} container
      */
@@ -71,9 +71,9 @@
 
     /**
      * Получение изображений
-     * 
+     *
      * @param object imgCategory
-     * 
+     *
      * @return void
      */
   const getImg = (category) => {
@@ -99,6 +99,7 @@
     };
 
     const renderHtml = (html) => {
+
         $('.main-svg').empty();
         $('.main-svg').append(html);
         if (draggable) draggable.target = ""
@@ -353,7 +354,7 @@
         Accordion.prototype.resetContentVisibility = function(item, content, bool) {
             Util.toggleClass(item, this.showClass, !bool);
             content.removeAttribute("style");
-            if (bool && !this.multiItems) { // accordion item has been closed -> check if there's one open to move inside viewport 
+            if (bool && !this.multiItems) { // accordion item has been closed -> check if there's one open to move inside viewport
                 this.moveContent();
             }
         };

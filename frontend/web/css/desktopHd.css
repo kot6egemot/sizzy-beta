@@ -3,18 +3,20 @@
                           font-family: "TimesNewRomanPSMT";
                           src: url('../fonts/Times New Roman.ttf') format("truetype");
                         }
-                        
+
 .desktophd {
-  width               : 100%;
-  min-width           : 842px;
-  height              : 100vh;
-  min-height          : 595px;
-  position            : relative;
-  overflow            : hidden;
-  margin              : 0px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color    : rgba(255, 255, 255, 1.0);
+    width: 100%;
+    height: 100%;
+  /*width               : 100%;*/
+  /*min-width           : 842px;*/
+  /*height              : 100vh;*/
+  /*min-height          : 595px;*/
+  /*position            : relative;*/
+  /*overflow            : hidden;*/
+  /*margin              : 0px;*/
+  /*-webkit-font-smoothing: antialiased;*/
+  /*-moz-osx-font-smoothing: grayscale;*/
+  /*background-color    : rgba(255, 255, 255, 1.0);*/
 }
 a {
   text-decoration     : none;
@@ -401,56 +403,56 @@ div {
 }
 @-webkit-keyframes anima-reveal {
   0%
-   
+
   {
       opacity: 0;
     }
-  
-    
+
+
   100%
-   
+
   {
       opacity: 1;
     }
 }
 @-moz-keyframes anima-reveal {
   0%
-   
+
   {
       opacity: 0;
     }
-  
-    
+
+
   100%
-   
+
   {
       opacity: 1;
     }
 }
 @-o-keyframes anima-reveal {
   0%
-   
+
   {
       opacity: 0;
     }
-  
-    
+
+
   100%
-   
+
   {
       opacity: 1;
     }
 }
 @keyframes anima-reveal {
   0%
-   
+
   {
       opacity: 0;
     }
-  
-    
+
+
   100%
-   
+
   {
       opacity: 1;
     }
