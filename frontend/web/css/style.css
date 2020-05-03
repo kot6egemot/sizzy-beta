@@ -323,9 +323,9 @@ moveable-line.moveable-dashed.moveable-vertical:before{
 
 /* new styles */
 
-/*svg {
+.main-svg svg {
     position: absolute;
-} */
+}
 
 .main-svg-container {
     padding: 64px 0;
@@ -342,6 +342,12 @@ moveable-line.moveable-dashed.moveable-vertical:before{
 
 .view-container > div {
     margin: auto;
+}
+
+.view-container__add {
+    position: absolute;
+    right: 33px;
+    bottom: calc(100% + 15px);
 }
 
 body {

@@ -174,15 +174,10 @@ $this->title = 'Страница редактирования';
                     </div>
 
                   <!--  <div class="text-center flex-column">
-
                
-
                           <button class='export-pdf k-button'>Export as PDF</button>
-
                          <button class='export-img k-button'>Export as Image</button>
-
                         <button class='export-svg k-button'>Export as SVG</button>
-
                         <button class="button-no-active shadow_none btn btn--primary button-studio"><svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M4.4144 6.00007H10.0002C17.8691 6.00007 21.0002 9.25637 21.0002 17.0001H19.0002C19.0002 10.3438 16.7466 8.00007 10.0002 8.00007H4.4144L8.7073 12.293L7.293 13.7072L0.585938 7.00007L7.293 0.292969L8.7073 1.70717L4.4144 6.00007Z" fill="#393939" />
                             </svg>
@@ -190,16 +185,12 @@ $this->title = 'Страница редактирования';
                         <button class="button-no-active shadow_none btn btn--primary button-studio"><svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M16.5858 6.00007L12.2929 1.70717L13.7071 0.292969L20.4142 7.00007L13.7071 13.7072L12.2929 12.293L16.5858 8.00007H11C4.2536 8.00007 2 10.3438 2 17.0001H0C0 9.25637 3.1311 6.00007 11 6.00007H16.5858Z" fill="#393939" />
                             </svg></button>
-
                          <input type="text" placeholder="Градус" class="rotate-input" style="display: none;"> 
-
                               <div class="def-number-input number-input safari_only">
                                 <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus size-tool"></button>
                                 <input class="scale" min="0" name="scale" value="100" type="number">
                                 <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus size-tool"></button>
                             </div> 
-
-
                          <input class="scale" type="text" placeholder="Scale" value="100">
                     </div>    -->
 
@@ -251,7 +242,6 @@ $this->title = 'Страница редактирования';
 
                         <!--
                             <button class="save btn btn--primary button-studio save-button"><img src="img/15.svg"></button>
-
 -->
                     </div>
 
@@ -289,12 +279,9 @@ $this->title = 'Страница редактирования';
                         </div>
 
                     <!--    <div class="container h-100">
-
                     <div class="row h-100">
                         <div class="align-self-center main-svg">
-
                         </div>
-
                     </div>
                 </div> -->
                     <div class="position-absolute fixed-bottom">
@@ -616,23 +603,19 @@ $this->title = 'Страница редактирования';
 
 
                     <!--  <div class="format-container collapse" id="collapseExample1">
-
                     <form>
                         <div class=" p-4 card">
                             <fieldset>
                                 <legend class="form-legend">Выберете формат</legend>
-
                                 <ul class="radio-list flex flex-column flex-gap-xxxs format-save">
                                     <li>
                                         <input class="format-save-item radio" type="radio" name="radioButton" id="radio12" value="png" checked>
                                         <label for="radio12">PNG</label>
                                     </li>
-
                                     <li>
                                         <input class="format-save-item radio" type="radio" name="radioButton" id="radio13" value="jpeg">
                                         <label for="radio13">JPEG</label>
                                     </li>
-
                                     <li>
                                         <input class="format-save-item radio" type="radio" name="radioButton" id="radio14" value="pdf">
                                         <label for="radio14">PDF</label>
@@ -641,7 +624,6 @@ $this->title = 'Страница редактирования';
                             </fieldset>
                         </div>
                     </form>
-
                 </div>-->
                 </div>
                     </div>
@@ -662,4 +644,3 @@ $this->title = 'Страница редактирования';
         <script>
 
     </script>
-
