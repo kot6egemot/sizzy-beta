@@ -176,64 +176,86 @@
                     })
                 }
             });
-            
-            
-             $('.fonts-style').click((event) => {
-         if ($('.category-section:visible').get(0)) {
-             oldSection = '.category-section';
-         }
-         if ($('.html-list-section:visible').get(0)) {
-             oldSection = '.html-list-section';
-         }
+        }
 
-         if ($('.font-section:visible').get(0)) {
-             $('.font-section').hide();
-             $(oldSection).show();
-             return;
-         }
+        $.ajax({
+            type: 'GET',
+            url: 'img/html',
+            data: {
+                id: element.attr('data-id')
+            },
+            success: (html) => {
+                renderHtml(html);
+
+                if (element.attr('data-list') == '0') {
+                    $('aside').removeClass('sidebar--is-visible');
+                }
+            }
+        })
+    });
+    
+    
+    
+     $('.fonts-style').click((event) => {
+        if ($('.category-section:visible').get(0)) {
+            oldSection = '.category-section';
+        }
+        if ($('.html-list-section:visible').get(0)) {
+            oldSection = '.html-list-section';
+        }
+
+        if ($('.font-style-section:visible').get(0)) {
+            $('.font-style-section').hide();
+            $(oldSection).show();
+            return;
+        }
 
 
-         $('.category-section').hide();
-         $('.html-list-section').hide();
-         $('.font-section').show();
+        $('.font-section').hide();
+        $('.category-section').hide();
+        $('.html-list-section').hide();
+        $('.fonts-style-list').empty();
+        $('.font-style-section').show();
+        $.ajax({
+            type: 'GET',
+            url: '/img/font-face',
+            data: {
+                font: $('.current-font').html()
+            },
+            success: (html) => {
+                html.faces.filter(face => {
+                    $('.fonts-style-list').append(`
+                    <button data-src="${face.src}" type="button" class="list-group-item list-group-item-action">${face.title}</button>
+                    `);
+                })
 
-         $.ajax({
-             type: 'GET',
-             url: '/img/font',
-             data: {
-                 pivot: 0
-             },
-             success: (html) => {
-                 html.filter((font) => {
-                     $('.fonts-style-list').append(`
-                     <button data-src="${font.src}" type="button" class="list-group-item list-group-item-action">${font.title}</button>
-                     `);
-                 })
+                $('.fonts-style-list').click((event) => {
+                    if (event.target.tagName != 'BUTTON') return;
 
-                 $('.fonts-style-list').click((event) => {
-                     if (event.target.tagName != 'BUTTON') return;
+                    let pathToFont = $(event.target).attr('data-src');
+                    let face = $(event.target).html();
+                    let title = $('.current-font').html() + '-' + face;
 
-                     let pathToFont = $(event.target).attr('data-src');
-                     let title = $(event.target).html();
+                    $('.main-svg').children().first().prepend(`
+                        <style class="fonts-style">
+                            @font-face {
+                                font-family: ${title};
+                                src: url(/${pathToFont}) format('truetype');
+                                font-weight: normal;
+                                font-style: normal;
+                            }
+                        </style>
+                    `);
 
-                     $('.main-svg').children().first().prepend(`
-                         <style class="fonts-style">
-                             @font-face {
-                                 font-family: ${title};
-                                 src: url(http://sizze.io/${pathToFont}) format('truetype');
-                                 font-weight: normal;
-                                 font-style: normal;
-                             }
-                         </style>
-                     `);
-
-                     $(CURRENT_EDIT_ELEMENT).css('font-family', title);
-                     updateCurrentFont();
-                     draggable.updateRect();
-                     draggable.updateTarget();
-                 });
-             }
-         });
+                    $('.current-font-style').html(face);
+                    $(CURRENT_EDIT_ELEMENT).css('font-family', title);
+                    $(CURRENT_EDIT_ELEMENT).data('font-family', $('.current-font').html());
+                    $(CURRENT_EDIT_ELEMENT).data('font-style', face);
+                    draggable.updateRect();
+                    draggable.updateTarget();
+                });
+            }
+        });
 
      });
 
@@ -260,25 +282,7 @@
      $('.format-button').click((event) => {
          $('.font-container').addClass('collapse');
          $('.font-container').removeClass('show');
-     });            
-            
-        }
-
-        $.ajax({
-            type: 'GET',
-            url: 'img/html',
-            data: {
-                id: element.attr('data-id')
-            },
-            success: (html) => {
-                renderHtml(html);
-
-                if (element.attr('data-list') == '0') {
-                    $('aside').removeClass('sidebar--is-visible');
-                }
-            }
-        })
-    });
+     });
 
     $('.fonts').click((event) => {
         if ($('.category-section:visible').get(0)) {
@@ -297,6 +301,7 @@
 
         $('.category-section').hide();
         $('.html-list-section').hide();
+        $('.font-style-section').hide();
         $('.font-section').show();
 
         $.ajax({
@@ -318,18 +323,21 @@
                     let pathToFont = $(event.target).attr('data-src');
                     let title = $(event.target).html();
 
-                    $('.main-svg').children().first().prepend(`
-                        <style class="fonts-style">
+                    if ($('.main-svg').find(`.fonts-style-${title}`).length === 0) {
+                        $('.main-svg').children().first().prepend(`
+                        <style class="fonts-style fonts-style-${title}">
                             @font-face {
                                 font-family: ${title};
-                                src: url(http://sizze.io/${pathToFont}) format('truetype');
+                                src: url(/${pathToFont}) format('truetype');
                                 font-weight: normal;
                                 font-style: normal;
                             }
                         </style>
                     `);
+                    }
 
                     $(CURRENT_EDIT_ELEMENT).css('font-family', title);
+                    $(CURRENT_EDIT_ELEMENT).data('font-family', title);
                     updateCurrentFont();
                     draggable.updateRect();
                     draggable.updateTarget();

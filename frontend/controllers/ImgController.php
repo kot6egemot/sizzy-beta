@@ -172,4 +172,21 @@ class ImgController extends Controller
             throw $why;
         }
     }
+
+    /**
+     * Загрузка начертаний шрифтов
+     */
+    public function actionFontFace()
+    {
+        if (Yii::$app->request->isAjax) {
+            $font = Yii::$app->request->get('font');
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            $row = Font::getByName($font);
+            $row['faces'] = array_map(static function(array $item) use ($row) {
+                $item['src'] = pathinfo($row['src'], PATHINFO_DIRNAME) . '/' . $item['fileName'];
+                return $item;
+            }, $row['faces']);
+            return $row;
+        }
+    }
 };
