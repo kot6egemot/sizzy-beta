@@ -39,7 +39,6 @@
                  }
              }
          }
-         var_dump($fonts);
          foreach ($fonts as $fontName => $attr) {
              $regular = null;
              foreach ($attr['faces'] as $face) {
