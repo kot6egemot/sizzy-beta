@@ -34,8 +34,9 @@ const updatePalette = (hex) => {
 };
 
 const updateCurrentFont = () => {
-    $('.current-font').html($(CURRENT_EDIT_ELEMENT).data('font-family') || $(CURRENT_EDIT_ELEMENT).css('font-family').split(',')[0])
+    $('.current-font').html($(CURRENT_EDIT_ELEMENT).data('font-family') || $(CURRENT_EDIT_ELEMENT).css('font-family').split(',')[0]);
 };
+
 
 const updateCurrentFontSize = () => {
     $('.current-font-size').val($(CURRENT_EDIT_ELEMENT).css('font-size').replace('px', ''))
@@ -43,7 +44,7 @@ const updateCurrentFontSize = () => {
 
 const updateCurrentStyle = () => {
     $('.current-font-style').html($(CURRENT_EDIT_ELEMENT).data('font-style') || 'Regular')
-};
+}
 
 const divToBr = () => {
     let content = $(CURRENT_EDIT_ELEMENT).html();
@@ -115,38 +116,6 @@ const updateTools = (event) => {
     $('.quantity').attr('value', fontSize);
 };
 
-function setOwnStyles(target) {
-    // const el = $(target);
-    // const ownStyles = {...$(el).data('sceneStyle')};
-    //
-    // const props = ['color', 'font-size', 'font-weight', 'font-style', 'text-decoration'];
-    // props.forEach(prop => {
-    //     ownStyles[prop] = ownStyles[props] || el.css(prop);
-    // });
-    // el.data('sceneStyle', ownStyles);
-    //
-    // console.log(el.data('sceneStyle'));
-}
-
-function updateOwnStyle(target, key, value) {
-    const el = $(target);
-    // el.data('sceneStyle', {
-    //     [key]: value
-    // });
-    el.css(key, value);
-    // console.log('update own style: ', el.data('sceneStyle'));
-    // convertOwnStylesForScene(target);
-}
-
-function convertOwnStylesForScene(target) {
-    // const el = $(target);
-    // const ownStyles = {...$(el).data('sceneStyle')};
-    // Object.entries(ownStyles).forEach(([key, value]) => {
-    //     console.log(`covert ${key} ${value}`);
-    //     frame.set(key, value);
-    // })
-}
-
 const initalTransform = {
     rotate: "0deg",
     scaleX: 1,
@@ -170,16 +139,17 @@ function setTransform(target) {
     //target.style.cssText = frame.toCSS();
 }
 
-const label = document.createElement('div');
-label.className = 'label';
-document.body.appendChild(label);
-
-const labelElement = document.querySelector(".label");
-
 function setLabel(clientX, clientY, text) {
 //     labelElement.style.cssText = `
 // display: block; transform: translate(${clientX}px, ${clientY - 10}px) translate(-100%, -100%);`;
 //     labelElement.innerHTML = text;
+}
+
+let pickable = true;
+function setPickable(bool) {
+    setTimeout(() => {
+        pickable = bool;
+    }, 20);
 }
 
 /**
@@ -187,6 +157,7 @@ function setLabel(clientX, clientY, text) {
  */
 const editableHandler = (event) => {
     event.stopPropagation();
+    if (!pickable) return;
 
     let target = $(event.target);
     let svg = ['path', 'g', 'svg', 'rect', 'Polygon'];
@@ -202,15 +173,11 @@ const editableHandler = (event) => {
 
     console.log(target.prop('tagName'));
 
-    setOwnStyles(target[0]);
-    convertOwnStylesForScene(target[0]);
-    console.log('thos rotate', $(target[0]).data('rotate'));
     frame.set('transform', 'rotate', $(target[0]).data('rotate') + 'deg' || 0);
 
     if (draggable) draggable.destroy();
 
-    draggable = new Moveable(document.body, {
-        // target: moveableElement,
+    draggable = new Moveable(target.parent()[0], {
         draggable: true,
         throttleDrag: 0,
         resizable: true,
@@ -242,6 +209,7 @@ const editableHandler = (event) => {
         });
 
     }).on("drag", ({ target, left, top, clientX, clientY, isPinch }) => {
+        pickable = false;
         frame.set("left", `${left}px`);
         frame.set("top", `${top}px`);
 
@@ -252,6 +220,7 @@ const editableHandler = (event) => {
         !isPinch && setLabel(clientX, clientY, `X: ${left}px<br/>Y: ${top}px`);
 
     }).on("scale", ({ target, delta, clientX, clientY, isPinch }) => {
+        pickable = false;
         const scaleX = frame.get("transform", "scaleX") * delta[0];
         const scaleY = frame.get("transform", "scaleY") * delta[1];
         frame.set("transform", "scaleX", scaleX);
@@ -260,9 +229,11 @@ const editableHandler = (event) => {
         !isPinch && setLabel(clientX, clientY, `S: ${scaleX.toFixed(2)}, ${scaleY.toFixed(2)}`);
 
     }).on("rotateStart", ({ target, beforeDelta, clientX, clientY, isPinch }) => {
+        pickable = false;
         const currentDeg = $(target).data('rotate') || 0;
         frame.set("transform", "rotate", `${currentDeg}deg`);
     }).on("rotate", ({ target, beforeDelta, clientX, clientY, isPinch }) => {
+        pickable = false;
         const deg = parseFloat(frame.get("transform", "rotate")) + beforeDelta;
 
         // const rotateDeg = $(target).data('rotate', deg) || 0;
@@ -273,26 +244,27 @@ const editableHandler = (event) => {
         !isPinch && setLabel(clientX, clientY, `R: ${deg.toFixed(1)}`);
 
     }).on("resize", ({ target, width, height, clientX, clientY, isPinch }) => {
+        pickable = false;
         frame.set("width", `${width}px`);
         frame.set("height", `${height}px`);
         setTransform(target);
         !isPinch &&  setLabel(clientX, clientY, `W: ${width}px<br/>H: ${height}px`);
 
     }).on("warp", ({ target, multiply, delta, clientX, clientY }) => {
+        pickable = false;
         frame.set("transform", "matrix3d", multiply(frame.get("transform", "matrix3d"), delta));
         setTransform(target);
         setLabel(clientX, clientY, `X: ${clientX}px<br/>Y: ${clientY}px`);
-
     }).on("dragEnd", () => {
-        labelElement.style.display = "none";
+        setPickable(true);
     }).on("scaleEnd", () => {
-        labelElement.style.display = "none";
+        setPickable(true);
     }).on("rotateEnd", () => {
-        labelElement.style.display = "none";
+        setPickable(true);
     }).on("resizeEnd", () => {
-        labelElement.style.display = "none";
+        setPickable(true);
     }).on("warpEnd", () => {
-        labelElement.style.display = "none";
+        setPickable(true);
     });
 
     frame.set('left', target.css('left'));
@@ -339,9 +311,9 @@ const editableHandler = (event) => {
 
     $(CURRENT_EDIT_ELEMENT).keyup((event) => {
         draggable.updateRect();
-
     });
-    console.log('Update editable element');
+
+    console.log('Update editable element', draggable, CURRENT_EDIT_ELEMENT);
 };
 
 /**
@@ -377,7 +349,6 @@ const toggleCss = (attrPointer, cssProperty, cssValueOn, cssValueOff, item = nul
 
     if (editableElement.attr(attrPointer)) {
         editableElement.css(cssProperty, cssValueOff);
-        updateOwnStyle($(editableElement), cssProperty, cssValueOff);
         editableElement.removeAttr(attrPointer);
         $(item).removeClass('active-style-button');
         return;
@@ -385,7 +356,6 @@ const toggleCss = (attrPointer, cssProperty, cssValueOn, cssValueOff, item = nul
 
     editableElement.attr(attrPointer, 'true');
     editableElement.css(cssProperty, cssValueOn);
-    updateOwnStyle($(editableElement), cssProperty, cssValueOn);
     $(item).addClass('active-style-button');
 }
 
@@ -416,7 +386,6 @@ const editUnderlineText = (event) => {
 
 const editSizeText = (event) => {
     $(CURRENT_EDIT_ELEMENT).css('font-size', $('.quantity').val() + 'px');
-    updateOwnStyle($(CURRENT_EDIT_ELEMENT), 'font-size', $('.quantity').val() + 'px');
     if (!draggable) return;
     draggable.updateRect();
     draggable.updateTarget();
@@ -437,7 +406,7 @@ const editColor = (event) => {
         $(CURRENT_EDIT_ELEMENT).css('background', $('.pcr-result').val());
         return;
     }
-    updateOwnStyle($(CURRENT_EDIT_ELEMENT), 'color', $('.pcr-result').val());
+    $(CURRENT_EDIT_ELEMENT).css('color', $('.pcr-result').val());
 };
 
 /**
@@ -644,8 +613,6 @@ function updateView() {
     const newWidth = mainSVG.getBoundingClientRect().width;
     const newHeight = mainSVG.getBoundingClientRect().height;
 
-    console.log(newWidth);
-
     $('.canvas-wrap').css({
         width: `${newWidth}px`,
         height: `${newHeight}px`,
@@ -665,8 +632,7 @@ $('.pcr-swatches').click((event) => {
         $(CURRENT_EDIT_ELEMENT).css('background', $('.pcr-result').val());
         return;
     }
-    // $(CURRENT_EDIT_ELEMENT).css('color', color);
-    updateOwnStyle($(CURRENT_EDIT_ELEMENT), 'color', color);
+    $(CURRENT_EDIT_ELEMENT).css('color', color);
 });
 
 $('.add-item').click((event) => {
