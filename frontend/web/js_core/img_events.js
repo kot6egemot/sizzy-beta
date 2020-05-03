@@ -290,6 +290,7 @@
 
         $('.category-section').hide();
         $('.html-list-section').hide();
+        $('.font-style-section').hide();
         $('.font-section').show();
 
         $.ajax({
