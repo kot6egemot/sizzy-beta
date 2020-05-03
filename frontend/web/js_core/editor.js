@@ -34,13 +34,17 @@ const updatePalette = (hex) => {
 };
 
 const updateCurrentFont = () => {
-    $('.current-font').html($(CURRENT_EDIT_ELEMENT).css('font-family').split(',')[0])
+    $('.current-font').html($(CURRENT_EDIT_ELEMENT).data('font-family') || $(CURRENT_EDIT_ELEMENT).css('font-family').split(',')[0]);
 };
 
 
 const updateCurrentFontSize = () => {
-    $('.current-font-size').val($(CURRENT_EDIT_ELEMENT).css('font-size').replace('px', ''));
+    $('.current-font-size').val($(CURRENT_EDIT_ELEMENT).css('font-size').replace('px', ''))
 };
+
+const updateCurrentStyle = () => {
+    $('.current-font-style').html($(CURRENT_EDIT_ELEMENT).data('font-style') || 'Regular')
+}
 
 const divToBr = () => {
     let content = $(CURRENT_EDIT_ELEMENT).html();
@@ -294,6 +298,7 @@ const editableHandler = (event) => {
     if ($(CURRENT_EDIT_ELEMENT).attr('data-type') == 'text') {
         updateCurrentFont();
         updateCurrentFontSize();
+        updateCurrentStyle();
         textRect();
     } else {
         defaultRect();
@@ -344,7 +349,6 @@ const toggleCss = (attrPointer, cssProperty, cssValueOn, cssValueOff, item = nul
 
     if (editableElement.attr(attrPointer)) {
         editableElement.css(cssProperty, cssValueOff);
-        // updateOwnStyle($(editableElement), cssProperty, cssValueOff);
         editableElement.removeAttr(attrPointer);
         $(item).removeClass('active-style-button');
         return;
@@ -352,7 +356,6 @@ const toggleCss = (attrPointer, cssProperty, cssValueOn, cssValueOff, item = nul
 
     editableElement.attr(attrPointer, 'true');
     editableElement.css(cssProperty, cssValueOn);
-    // updateOwnStyle($(editableElement), cssProperty, cssValueOn);
     $(item).addClass('active-style-button');
 }
 
