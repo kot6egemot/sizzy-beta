@@ -22,6 +22,9 @@
          $fonts = [];
          foreach($dirs as $fontName)
          {
+             if (!is_dir(self::DIR . '/' . $fontName)) {
+                 continue;
+             }
              $files = scandir(self::DIR . '/' . $fontName);
              foreach($files as $file)
              {
