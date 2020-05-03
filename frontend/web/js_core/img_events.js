@@ -284,24 +284,6 @@
          $('.font-container').removeClass('show');
      });
 
-        }
-
-        $.ajax({
-            type: 'GET',
-            url: 'img/html',
-            data: {
-                id: element.attr('data-id')
-            },
-            success: (html) => {
-                renderHtml(html);
-
-                if (element.attr('data-list') == '0') {
-                    $('aside').removeClass('sidebar--is-visible');
-                }
-            }
-        })
-    });
-
     $('.fonts').click((event) => {
         if ($('.category-section:visible').get(0)) {
             oldSection = '.category-section';
