@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Behu.io</title>
+    <title>Sizze.io</title>
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta content="Webflow" name="generator">
     <link href="/css/about.css" rel="stylesheet" type="text/css">
@@ -85,6 +85,8 @@
         <div class="text-block-8">Copyright © 2020 Behu.io. All rights reserved.</div>
     </div>
 </footer>
+<script src="/js/jquery-3.4.1.min.220afd743d.js?site=5e46b55da50ca81aa868e66a"></script>
+    <script src="/js/webflow.ca33318bc.js"></script>    
 <script src="/js/scripts.js"></script>
 </body>
 

@@ -64,6 +64,8 @@ class AppAsset extends AssetBundle
         'https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js',
         'https://unpkg.com/html2canvas@1.0.0-rc.5/dist/html2canvas.js',
         'https://cdn.jsdelivr.net/npm/file-saver@2.0.2/dist/FileSaver.min.js',
+        'js/webflow.ca33318bc.js',
+        'js/jquery-3.4.1.min.220afd743d.js',
     ];
 
     public $depends = [
