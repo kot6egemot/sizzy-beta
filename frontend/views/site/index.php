@@ -168,7 +168,7 @@ $this->title = 'Страница редактирования';
                         <button class="button-no-active shadow_none btn btn--primary button-studio" aria-controls="sidebar"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M2 3V14C0.89543 14 0 13.1046 0 12V2C0 0.89543 0.89543 0 2 0H12C13.1046 0 14 0.89543 14 2H3C2.4477 2 2 2.4477 2 3ZM5 17V6C5 5.4477 5.4477 5 6 5H17C17 3.8954 16.1046 3 15 3H5C3.8954 3 3 3.8954 3 5V15C3 16.1046 3.8954 17 5 17ZM8 6H18C19.1046 6 20 6.8954 20 8V18C20 19.1046 19.1046 20 18 20H8C6.8954 20 6 19.1046 6 18V8C6 6.8954 6.8954 6 8 6ZM18 18V8H8V18H18Z" fill="#393939" />
                             </svg></button>
-                        <a class="button-no-active shadow_none btn btn--primary button-studio" href="http://sizze.io/about/for-designers.html"><svg class="m-inherit" width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <a class="button-no-active shadow_none btn btn--primary button-studio" href="/site/about"><svg class="m-inherit" width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M4.8887 8L10.89 1.99867L16.8913 8H16.89V18H4.89V8H4.8887ZM2.89001 9.9987L1.4132 11.4755L0 10.0623L9.477 0.585293C10.2574 -0.195098 11.5226 -0.195098 12.303 0.585293L21.78 10.0623L20.3668 11.4755L18.89 9.9987V18C18.89 19.1046 17.9946 20 16.89 20H4.89C3.7854 20 2.89001 19.1046 2.89001 18V9.9987Z" fill="#393939" />
                             </svg></a>
                     </div>
