@@ -42,6 +42,7 @@ class AppAsset extends AssetBundle
         'js/bootstrap.min.js',
         'js/mdb.min.js',
         'js/mdb.js',
+        'js/active_template.js',
         'https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js',
         'https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.es5.min.js',
         'https://rawgithub.com/ajaxorg/ace-builds/master/src/ext-language_tools.js',

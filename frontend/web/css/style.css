@@ -387,3 +387,53 @@ main.no-main-svg {
         padding-bottom: 83px;
     }
 }
+
+
+/* Подсветка границ hover при наведении на элементы canvas, на элементы в списке выбора */
+.category-section li div{
+    border: 2px solid transparent;
+}
+
+.category-section li .content-block.active{
+    border: #0b51c5 2px solid ;
+    border-radius: 2px;
+}
+
+.category-section li .content-block:hover{
+    border-radius: 2px;
+    border: #0b51c5 2px solid ;
+}
+
+div[contenteditable='true']:hover{
+    border: #0b51c5 2px dashed;
+}
+
+div[contenteditable='true']{
+    border: 2px solid transparent;
+}
+
+.no-main-svg .view-container svg:hover{
+    border: 2px solid transparent;
+}
+
+
+.no-main-svg .view-container svg:hover{
+    border: #0b51c5 2px dashed;
+}
+
+
+.main-svg .draggable{
+    border: 2px solid transparent;
+}
+
+.main-svg .draggable:hover{
+    border: #0b51c5 2px dashed;
+}
+
+.html-list-container img{
+    border: 2px solid transparent;
+}
+
+.html-list-container img.active{
+    border: #0b51c5 2px solid;
+}
