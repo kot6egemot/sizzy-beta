@@ -412,13 +412,13 @@ div[contenteditable='true']{
     border: 2px solid transparent;
 }
 
-.no-main-svg .view-container svg:hover{
+.main-svg .view-container svg{
     border: 2px solid transparent;
 }
 
 
-.no-main-svg .view-container svg:hover{
-    border: #0b51c5 2px dashed;
+.main-svg .view-container svg:hover{
+    border: #0b51c5 2px dashed !important;
 }
 
 
