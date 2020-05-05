@@ -12,7 +12,7 @@ $this->title = 'Страница редактирования';
     <aside class="sidebar sidebar--static@md js-sidebar" id="sidebar" aria-labelledby="sidebarTitle">
         <div class="sidebar__panel">
             <header class="sidebar__header">
-                <div class="Brand">Color Project</div>
+                <div class="Brand">Sizze Project</div>
                 <button class="reset sidebar__close-btn js-sidebar__close-btn js-tab-focus">
                     <svg class="icon" viewBox="0 0 16 16">
                         <title>Close panel</title>
@@ -46,8 +46,10 @@ $this->title = 'Страница редактирования';
                             </svg>
                         </button>
                     </div> -->
+                    
+                    <img class="ml-0" src="../uploads/sizze.svg">
 
-                    SIZZE.IO
+
 
 
 
