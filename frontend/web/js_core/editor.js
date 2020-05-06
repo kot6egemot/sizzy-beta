@@ -692,3 +692,8 @@ $('.main-svg-container').scroll((event) => {
 
     console.log('Here');
 });
+
+function onSetTextAlign(value){
+    let editableElement = $(CURRENT_EDIT_ELEMENT);
+    editableElement.css('text-align', value)
+}

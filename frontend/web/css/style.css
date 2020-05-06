@@ -437,3 +437,7 @@ div[contenteditable='true']{
 .html-list-container img.active{
     border: #0b51c5 2px solid;
 }
+
+#style-block{
+    display: none !important;
+}

@@ -381,7 +381,7 @@ $this->title = 'Страница редактирования';
                                 <div class="flex-column style-text-container hide">
 
 
-                                 <button id="" class="button-no-active shadow_none btn btn--primary button-studio">
+                                 <button id="st_left" class="button-no-active shadow_none btn btn--primary button-studio" onclick="onSetTextAlign('left')">
                                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M28 13V11H8V13H28ZM22 15V17H8V15H22ZM28 21V19H8V21H28ZM22 25V23H8V25H22Z" fill="#393939"/>
 </svg>
@@ -389,7 +389,7 @@ $this->title = 'Страница редактирования';
 
                                 </button>
 
-                                 <button id="" class="button-no-active shadow_none btn btn--primary button-studio">
+                                 <button id="st_center" class="button-no-active shadow_none btn btn--primary button-studio" onclick="onSetTextAlign('center')">
                                   <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M28 13V11H8V13H28ZM25 15V17H11V15H25ZM28 21V19H8V21H28ZM25 25V23H11V25H25Z" fill="#393939"/>
 </svg>
@@ -399,7 +399,7 @@ $this->title = 'Страница редактирования';
 
 
 
-                                                    <button id="" class="button-no-active shadow_none btn btn--primary button-studio">
+                                <button id="st_right" class="button-no-active shadow_none btn btn--primary button-studio" onclick="onSetTextAlign('right')">
 <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M28 13V11H8V13H28ZM28 15V17H14V15H28ZM28 21V19H8V21H28ZM28 25V23H14V25H28Z" fill="#393939"/>
 </svg>
@@ -409,7 +409,7 @@ $this->title = 'Страница редактирования';
                                 </button>
 
 
-                                                                               <button id="" class="button-no-active shadow_none btn btn--primary button-studio">
+                                                                               <button id="st_justify" class="button-no-active shadow_none btn btn--primary button-studio" onclick="onSetTextAlign('justify')">
 
 
 
