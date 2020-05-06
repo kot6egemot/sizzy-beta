@@ -163,7 +163,9 @@ div[data-set="true"] {
 
 .show-block {
     display: block;
-    left: 80%;
+    right: 0px;
+    float: right!important;
+    left: auto!important;
     z-index: 100;
 }
 
