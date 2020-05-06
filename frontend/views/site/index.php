@@ -296,7 +296,7 @@ $this->title = 'Страница редактирования';
 
                                 <div class="flex-column style-block-container hide">
 
-                                                                 <button id="" class="button-no-active shadow_none btn btn--primary button-studio">
+                                                                 <button id="" class="button-no-active shadow_none btn btn--primary button-studio" onclick="onSetTextAlign('left')">
 
 
 
@@ -305,7 +305,7 @@ $this->title = 'Страница редактирования';
 </svg>
 
                                 </button>
-                                                                 <button id="" class="button-no-active shadow_none btn btn--primary button-studio">
+                                                                 <button id="" class="button-no-active shadow_none btn btn--primary button-studio" onclick="onSetTextAlign('center')">
 
 
 <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -314,7 +314,7 @@ $this->title = 'Страница редактирования';
 
 
                                 </button>
-                                                                 <button id="" class="button-no-active shadow_none btn btn--primary button-studio">
+                                                                 <button id="" class="button-no-active shadow_none btn btn--primary button-studio" onclick="onSetTextAlign('right')">
 
 <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M8 8V10H28V8H8ZM20.1429 28H15.8571C14.7943 28 14 27.0733 14 26V13C14 11.9267 14.7943 11 15.8571 11H20.1429C21.2057 11 22 11.9267 22 13V26C22 27.0733 21.2057 28 20.1429 28ZM20 26V13H16V26H20Z" fill="#393939"/>
@@ -326,7 +326,7 @@ $this->title = 'Страница редактирования';
 
 
 
-                                       <button id="" class="button-no-active shadow_none btn btn--primary button-studio">
+                                       <button id="" class="button-no-active shadow_none btn btn--primary button-studio" onclick="onSetTextAlign('justify')">
 
 
 <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
